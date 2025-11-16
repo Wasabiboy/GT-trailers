@@ -1323,7 +1323,7 @@ p {
 /* Hardware Grid Styles */
 .hardware-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-top: 40px;
 }
@@ -1382,6 +1382,12 @@ p {
     height: auto;
     display: block;
     border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+    .hardware-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
