@@ -1323,17 +1323,18 @@ p {
 /* Hardware Grid Styles */
 .hardware-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 40px;
 }
 
 .hardware-item {
     background: var(--white);
-    padding: 25px;
+    padding: 30px;
     border-radius: 8px;
     border-left: 4px solid var(--primary-color);
     transition: var(--transition);
+    min-width: 0;
 }
 
 .hardware-item:hover {
