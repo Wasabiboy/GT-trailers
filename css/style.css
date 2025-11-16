@@ -1087,6 +1087,15 @@ p {
     align-items: start;
 }
 
+.service-detail-content.hardware-full-width {
+    grid-template-columns: 1fr;
+}
+
+.service-detail-content.hardware-full-width .service-detail-text {
+    max-width: 100%;
+    width: 100%;
+}
+
 /* Header Row: Image + Heading/Description */
 .service-header-row {
     display: grid;
