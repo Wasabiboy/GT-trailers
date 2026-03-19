@@ -32,7 +32,7 @@
 }
 
 [data-theme="dark"] .header {
-    background: rgba(29, 53, 87, 0.95);
+    background: rgba(7, 44, 121, 0.95);
 }
 
 [data-theme="dark"] .contact-form {
@@ -97,9 +97,19 @@ p {
     padding: 0 40px;
 }
 
+/* Full viewport-width inner wrapper (content uses full browser width with side padding) */
+.container.container--full-bleed {
+    max-width: none;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: clamp(20px, 4vw, 56px);
+    padding-right: clamp(20px, 4vw, 56px);
+    box-sizing: border-box;
+}
+
 /* Header - Glassmorphism */
 .header {
-    background: rgb(7, 43, 121);
+    background: rgb(7, 44, 121);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -108,10 +118,11 @@ p {
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: background 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
 }
 
 .header.scrolled {
-    background: rgba(15, 44, 85, 0.95);
+    background: rgba(7, 44, 121, 0.95);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -204,7 +215,8 @@ p {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     padding: 4px;
-    overflow: hidden;
+    /* visible so .dropdown-menu (position absolute) is not clipped */
+    overflow: visible;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -317,7 +329,7 @@ p {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 1100;
 }
 
 .nav-menu .dropdown:hover .dropdown-menu {
@@ -760,6 +772,51 @@ p {
     background: var(--light-color);
 }
 
+/* Boat trailers page: left-aligned intro + Quickload block above cards */
+.services-intro--left {
+    text-align: left;
+}
+
+.services-intro--left .section-title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.services-intro--left .services-intro-text {
+    font-size: 18px;
+    color: var(--text-light);
+    max-width: 900px;
+    margin: 0 0 0 0;
+    line-height: 1.8;
+}
+
+.services .gt-quickload-panel {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.services .gt-quickload-panel .gt-quickload-heading {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--dark-color);
+    letter-spacing: -0.5px;
+}
+
+.services .gt-quickload-panel .gt-quickload-subheading {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -1151,6 +1208,15 @@ p {
     background: var(--light-color);
 }
 
+/* Full-bleed band: section spans viewport; use with .container--full-bleed inside */
+.service-detail--full-bleed {
+    width: 100%;
+    max-width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
 .service-detail-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1197,6 +1263,55 @@ p {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-bottom: 40px;
+}
+
+/* Jetski page: model card (image + options) + specs column */
+.jetski-features-grid {
+    grid-template-columns: minmax(280px, 1fr) minmax(0, 1.25fr);
+}
+
+.jetski-model-options h3 {
+    margin-bottom: 12px;
+}
+
+.jetski-model-options__media {
+    margin-bottom: 20px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.jetski-model-options__img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.jetski-model-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 0;
+}
+
+.jetski-model-cards .model-card {
+    margin: 0;
+    height: 100%;
+}
+
+.jetski-specs-panel h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 992px) {
+    .jetski-features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .jetski-model-cards {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* If only one feature section, make it span 2 columns */
@@ -1296,6 +1411,87 @@ p {
     color: var(--text-light);
 }
 
+/* Editable specification tables (boat / jetski pages) */
+.spec-table-section {
+    margin-top: 48px;
+}
+
+.spec-table-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8aa8bc;
+    margin-bottom: 16px;
+}
+
+.spec-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(90, 110, 130, 0.25);
+}
+
+table.spec-table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+table.spec-table.spec-table--wide {
+    min-width: 760px;
+}
+
+.spec-table-footnote {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .spec-table-footnote {
+    color: var(--text-color);
+}
+
+table.spec-table thead th {
+    background: #6b7c8f;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-size: 13px;
+    padding: 14px 18px;
+    text-align: left;
+    border: 1px solid #5a6a7a;
+}
+
+table.spec-table tbody td {
+    background: var(--white);
+    border: 1px solid #c8d6e2;
+    padding: 14px 18px;
+    vertical-align: middle;
+    color: var(--text-color);
+}
+
+table.spec-table tbody tr:last-child td {
+    border-bottom: 1px solid #c8d6e2;
+}
+
+[data-theme="dark"] .spec-table-title {
+    color: #8aa8bc;
+}
+
+[data-theme="dark"] table.spec-table thead th {
+    background: #4a5568;
+    border-color: #3d4756;
+}
+
+[data-theme="dark"] table.spec-table tbody td {
+    background: var(--white);
+    border-color: #444;
+}
+
 .service-list {
     list-style: none;
     padding: 0;
@@ -1344,6 +1540,32 @@ p {
     background: var(--primary-color);
     color: var(--white);
     transform: scale(1.1);
+}
+
+/* Key features / spec lists: two columns on wide screens */
+.service-list.service-list--two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 clamp(24px, 4vw, 48px);
+    align-items: start;
+}
+
+.service-list.service-list--two-cols li:nth-last-child(-n + 2) {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .service-list.service-list--two-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .service-list.service-list--two-cols li:nth-last-child(-n + 2) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .service-list.service-list--two-cols li:last-child {
+        border-bottom: none;
+    }
 }
 
 /* Model Cards */
@@ -1570,7 +1792,11 @@ p {
 }
 
 .footer-column ul li {
-    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 14px;
+    line-height: 1.55;
 }
 
 .footer-column ul li a {
@@ -1586,7 +1812,11 @@ p {
 
 .footer-column ul li i {
     color: var(--primary-color);
-    margin-right: 10px;
+    margin-right: 0;
+    margin-top: 3px;
+    flex-shrink: 0;
+    width: 1.35em;
+    text-align: center;
 }
 
 .footer-bottom {
