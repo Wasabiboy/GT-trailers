@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GT Trailers - Interactive Page Tree</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1d23;
+            color: #e2e8f0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 24px;
+            background: rgba(0,0,0,0.4);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .header-hint {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        .controls {
+            display: flex;
+            gap: 12px;
+        }
+        .btn {
+            padding: 8px 16px;
+            background: #334155;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn:hover {
+            background: #475569;
+        }
+        #diagram {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+        #diagram:active {
+            cursor: grabbing;
+        }
+        .node {
+            cursor: grab;
+        }
+        .node:active {
+            cursor: grabbing;
+        }
+        .node rect {
+            stroke-width: 2px;
+            rx: 8;
+            ry: 8;
+            transition: filter 0.15s;
+        }
+        .node:hover rect {
+            filter: brightness(1.1);
+        }
+        .node text {
+            font-size: 12px;
+            font-weight: 500;
+            fill: #1e293b;
+            pointer-events: none;
+        }
+        .node .subtitle {
+            font-size: 10px;
+            fill: #64748b;
+            font-weight: 400;
+        }
+        .link {
+            fill: none;
+            stroke: #475569;
+            stroke-width: 2;
+            stroke-opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GT Trailers — Interactive Page Tree</h1>
+        <span class="header-hint">Drag nodes to move • Scroll to zoom • Drag canvas to pan</span>
+        <div class="controls">
+            <button class="btn" id="resetBtn">Reset View</button>
+            <button class="btn" id="centerBtn">Center</button>
+        </div>
+    </div>
+
+    <div id="diagram"></div>
+
+    <script>
+        const data = {
+            name: "Home",
+            file: "index.html",
+            type: "home",
+            children: [
+                {
+                    name: "Trailers",
+                    type: "section",
+                    children: [
+                        { name: "Handyman Trailer", file: "handyman-trailer.html", type: "page" },
+                        { name: "Contractor Trailer", file: "contractor-trailer.html", type: "page" },
+                        { name: "Digger Trailer", file: "digger-trailer.html", type: "page" },
+                        { name: "Specialised Trailers", file: "specialised-trailers.html", type: "page" }
+                    ]
+                },
+                {
+                    name: "Boat Trailers",
+                    type: "section",
+                    children: [
+                        { name: "All Boat Trailers", file: "manufacturing.html", type: "page" },
+                        { name: "Small Boats", file: "small-boats.html", type: "page" },
+                        { name: "Medium Boats", file: "medium-boats.html", type: "page" },
+                        { name: "Large Boats", file: "large-boats.html", type: "page" },
+                        { name: "Jetskis", file: "jetskis.html", type: "page" }
+                    ]
+                },
+                {
+                    name: "Hardware",
+                    type: "section",
+                    children: [
+                        { name: "Trailer Hardware", file: "hardware.html", type: "page" }
+                    ]
+                },
+                { name: "Account Form", file: "account-form.html", type: "form" }
+            ]
+        };
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const svg = d3.select("#diagram")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const g = svg.append("g");
+
+        const zoom = d3.zoom()
+            .scaleExtent([0.2, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        const root = d3.hierarchy(data);
+        root.x0 = width / 2;
+        root.y0 = 80;
+
+        const treeLayout = d3.tree()
+            .size([width * 1.2, height * 1.2])
+            .separation((a, b) => (a.parent === b.parent ? 1.2 : 1.5));
+
+        const colorFor = (d) => {
+            if (d.data.type === "home") return "#e63946";
+            if (d.data.type === "form") return "#2d6a4f";
+            if (d.data.type === "section") return "#1e40af";
+            return "#334155";
+        };
+
+        const nodeWidth = 140;
+        const nodeHeight = 44;
+
+        function update(source) {
+            const treeData = treeLayout(root);
+            const nodes = treeData.descendants();
+            const links = treeData.links();
+
+            const link = g.selectAll(".link")
+                .data(links, d => d.target.data.name + "-" + (d.target.data.file || ""));
+
+            link.exit().remove();
+
+            const linkEnter = link.enter()
+                .append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkVertical()
+                    .x(d => d.x)
+                    .y(d => d.y));
+
+            link.merge(linkEnter).attr("d", d => {
+                const s = d.source, t = d.target;
+                return `M${s.x},${s.y} C${(s.x+t.x)/2},${s.y} ${(s.x+t.x)/2},${t.y} ${t.x},${t.y}`;
+            });
+
+            const node = g.selectAll(".node")
+                .data(nodes, d => d.data.name + "-" + (d.data.file || ""));
+
+            node.exit().remove();
+
+            const nodeEnter = node.enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`)
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
+
+            nodeEnter.append("rect")
+                .attr("width", nodeWidth)
+                .attr("height", nodeHeight)
+                .attr("x", -nodeWidth / 2)
+                .attr("y", -nodeHeight / 2)
+                .attr("fill", d => colorFor(d))
+                .attr("stroke", d => d3.color(colorFor(d)).brighter(0.5))
+                .attr("stroke-width", 2);
+
+            nodeEnter.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", d => d.data.file ? -4 : -4)
+                .attr("fill", "#fff")
+                .style("font-weight", "600")
+                .text(d => d.data.name);
+
+            nodeEnter.filter(d => d.data.file)
+                .append("text")
+                .attr("class", "subtitle")
+                .attr("text-anchor", "middle")
+                .attr("dy", 10)
+                .attr("fill", "rgba(255,255,255,0.8)")
+                .text(d => d.data.file);
+
+            node.merge(nodeEnter)
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+        }
+
+        function dragstarted(event, d) {
+            d3.select(this).raise();
+        }
+
+        function dragged(event, d) {
+            d.x = event.x;
+            d.y = event.y;
+            d3.select(this).attr("transform", `translate(${d.x},${d.y})`);
+            updateLinks();
+        }
+
+        function dragended(event, d) {
+            // Links update on next tick
+            updateLinks();
+        }
+
+        function updateLinks() {
+            g.selectAll(".link").attr("d", d => {
+                const source = d.source;
+                const target = d.target;
+                return `M${source.x},${source.y} C${(source.x + target.x) / 2},${source.y} ${(source.x + target.x) / 2},${target.y} ${target.x},${target.y}`;
+            });
+        }
+
+        update(root);
+
+        // Initial fit-to-view
+        setTimeout(() => {
+            const bounds = g.node().getBBox();
+            const pad = 80;
+            const scale = 0.9 / Math.max(bounds.width / (width - pad), bounds.height / (height - pad), 0.001);
+            const dx = width / 2 - (bounds.x + bounds.width / 2) * scale;
+            const dy = height / 2 - (bounds.y + bounds.height / 2) * scale + 40;
+            svg.transition().duration(500).call(
+                zoom.transform,
+                d3.zoomIdentity.translate(dx, dy).scale(scale)
+            );
+        }, 100);
+
+        document.getElementById("resetBtn").addEventListener("click", () => {
+            const bounds = g.node().getBBox();
+            const pad = 80;
+            const scale = 0.95 / Math.max(bounds.width / (width - pad), bounds.height / (height - pad));
+            const dx = width / 2 - (bounds.x + bounds.width / 2) * scale;
+            const dy = height / 2 - (bounds.y + bounds.height / 2) * scale + 40;
+            svg.transition().duration(500).call(
+                zoom.transform,
+                d3.zoomIdentity.translate(dx, dy).scale(scale)
+            );
+        });
+
+        document.getElementById("centerBtn").addEventListener("click", () => {
+            const bounds = g.node().getBBox();
+            const dx = width / 2 - (bounds.x + bounds.width / 2);
+            const dy = height / 2 - (bounds.y + bounds.height / 2);
+            svg.transition().duration(750).call(
+                zoom.transform,
+                d3.zoomIdentity.translate(dx, dy)
+            );
+        });
+    </script>
+</body>
+</html>

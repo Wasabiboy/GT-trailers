@@ -36,7 +36,7 @@ document.querySelectorAll('.nav-menu .dropdown > a').forEach(dropdownLink => {
         }
         // On desktop, allow navigation to the main page
     });
-    
+
     // Prevent dropdown from closing when clicking inside dropdown menu
     const dropdown = dropdownLink.parentElement;
     const dropdownMenu = dropdown.querySelector('.dropdown-menu');
@@ -71,7 +71,7 @@ const nextBtn = document.getElementById('nextBtn');
 function showSlide(index) {
     slides.forEach(slide => slide.classList.remove('active'));
     indicators.forEach(indicator => indicator.classList.remove('active'));
-    
+
     if (index >= slides.length) {
         currentSlide = 0;
     } else if (index < 0) {
@@ -79,7 +79,7 @@ function showSlide(index) {
     } else {
         currentSlide = index;
     }
-    
+
     slides[currentSlide].classList.add('active');
     indicators[currentSlide].classList.add('active');
 }
@@ -201,48 +201,106 @@ document.querySelectorAll('.stats, .about-stats').forEach(section => {
 // Form Submission
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your enquiry! We will get back to you soon.');
-    contactForm.reset();
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your enquiry! We will get back to you soon.');
+        contactForm.reset();
+    });
+}
 
-// Header Scroll Effect
-let lastScroll = 0;
+// Header Scroll Effect (Glassmorphism enhancement)
 const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+    if (window.pageYOffset > 50) {
+        header.classList.add('scrolled');
     } else {
-        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        header.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
 });
 
-// Add fade-in animation
-const fadeInElements = document.querySelectorAll('.feature-card, .service-card, .project-card, .product-card');
+// ===== Scroll Reveal Animation =====
+const revealElements = document.querySelectorAll(
+    '.feature-card, .service-card, .product-card, .about-content, ' +
+    '.section-subtitle, .section-title, .stat-box, .contact-content, ' +
+    '.section-description'
+);
 
-const fadeInObserver = new IntersectionObserver((entries) => {
+revealElements.forEach((el, index) => {
+    el.classList.add('reveal');
+    // Add staggered delays for grid children
+    const parent = el.parentElement;
+    if (parent) {
+        const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal'));
+        const i = siblings.indexOf(el);
+        if (i > 0 && i < 5) {
+            el.classList.add('reveal-delay-' + i);
+        }
+    }
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('revealed');
         }
     });
 }, {
-    threshold: 0.1
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 });
 
-fadeInElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    fadeInObserver.observe(element);
+document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
 });
+
+// ===== Back to Top Button =====
+const backToTop = document.getElementById('backToTop');
+
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ===== Dark Mode Toggle =====
+const themeToggle = document.getElementById('themeToggle');
+
+if (themeToggle) {
+    // Check for saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        if (newTheme === 'light') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+// ===== Auto Copyright Year =====
+const yearEl = document.getElementById('currentYear');
+if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+}
 
 // Footer Dropdown Toggle
 document.querySelectorAll('.footer-dropdown-toggle').forEach(toggle => {
@@ -270,4 +328,3 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-

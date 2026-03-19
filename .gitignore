@@ -1,0 +1,5 @@
+# Local tooling
+.claude/
+
+# Large design source library (not required for the website repo)
+GT TRAILERS/
