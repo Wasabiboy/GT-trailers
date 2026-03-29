@@ -107,6 +107,62 @@ p {
     box-sizing: border-box;
 }
 
+/* In-page anchors: offset for sticky header */
+#boat-trailers-top,
+#gt-quickload-boat-trailers,
+#small-boats,
+#medium-boats,
+#large-boats,
+#boat-trailer-specifications {
+    scroll-margin-top: 120px;
+}
+
+/* Boat size sections (small / medium / large) — light band for separation */
+.service-detail.boat-range-section {
+    background: #e8ebf0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .service-detail.boat-range-section {
+    background: #2c3138;
+    border-top-color: rgba(255, 255, 255, 0.07);
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Boat range: CTA button + back to top (manufacturing.html) */
+.boat-range-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    margin-top: 8px;
+    margin-bottom: 36px;
+}
+
+.boat-range-spec-btn {
+    flex: 1 1 auto;
+    min-width: min(100%, 220px);
+    max-width: 100%;
+    line-height: 1.45;
+    padding: 14px 22px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.boat-range-back-link {
+    flex-shrink: 0;
+    white-space: nowrap;
+    margin-left: auto;
+    font-weight: 600;
+}
+
+
 /* Header — solid background (fully opaque, no glass/transparency) */
 .header {
     background: rgb(7, 44, 121);
@@ -1168,13 +1224,18 @@ p {
 .page-header {
     background: linear-gradient(135deg, var(--secondary-color) 0%, var(--dark-color) 100%);
     color: var(--white);
-    padding: 80px 0 60px;
+    padding: 48px 0 40px;
     margin-top: 0;
+}
+
+/* Boat Trailers hub: less air between hero titles (after tighter .page-header) */
+.page-header + .services {
+    padding-top: 80px;
 }
 
 .breadcrumb {
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     opacity: 0.9;
 }
 
