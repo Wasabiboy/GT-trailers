@@ -272,30 +272,6 @@ if (backToTop) {
     });
 }
 
-// ===== Dark Mode Toggle =====
-const themeToggle = document.getElementById('themeToggle');
-
-if (themeToggle) {
-    // Check for saved preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        if (newTheme === 'light') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-
-        localStorage.setItem('theme', newTheme);
-    });
-}
-
 // ===== Auto Copyright Year =====
 const yearEl = document.getElementById('currentYear');
 if (yearEl) {
