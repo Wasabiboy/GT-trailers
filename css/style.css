@@ -762,6 +762,55 @@ p {
     background: var(--light-color);
 }
 
+/* Home: trailer accessories image grid */
+.accessories-showcase {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    background: #4a7c2e;
+    border: 4px solid #4a7c2e;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.accessory-cell {
+    background: var(--white);
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.accessory-cell img {
+    width: 100%;
+    height: 208px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: var(--white);
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.accessory-cell-label {
+    padding: 10px 6px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    background: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    line-height: 1.35;
+}
+
 /* Boat trailers page: left-aligned intro + Quickload block above cards */
 .services-intro--left {
     text-align: left;
@@ -1306,6 +1355,10 @@ p {
 @media (max-width: 600px) {
     .jetski-model-cards {
         grid-template-columns: 1fr;
+    }
+
+    .accessories-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
