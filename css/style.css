@@ -72,9 +72,9 @@ p {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 16px 24px;
-    margin-top: 8px;
-    margin-bottom: 36px;
+    gap: 12px 20px;
+    margin-top: 4px;
+    margin-bottom: 24px;
 }
 
 .boat-range-spec-btn {
@@ -668,18 +668,25 @@ p {
 
 .feature-icon {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16 / 9;
+    max-height: none;
     margin: 0 auto 20px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #e8eaef;
+    padding: 10px 12px;
+    box-sizing: border-box;
 }
 
 .feature-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
 }
 
 .feature-card h3 {
@@ -817,7 +824,7 @@ p {
 
 .services-intro--left .section-title {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .services-intro--left .services-intro-text {
@@ -829,14 +836,14 @@ p {
 }
 
 .services .gt-quickload-panel {
-    margin-top: 48px;
-    margin-bottom: 24px;
+    margin-top: 28px;
+    margin-bottom: 16px;
     text-align: left;
 }
 
 .services .gt-quickload-panel .gt-quickload-heading {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 30px;
     font-weight: 700;
     line-height: 1.2;
@@ -845,20 +852,33 @@ p {
 }
 
 .services .gt-quickload-panel .gt-quickload-subheading {
-    margin-top: 8px;
-    margin-bottom: 16px;
+    margin-top: 4px;
+    margin-bottom: 8px;
     font-size: 20px;
     font-weight: 700;
     color: var(--secondary-color);
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     border-bottom: 3px solid var(--primary-color);
     display: inline-block;
 }
 
+.services .gt-quickload-panel .gt-quickload-panel__lead {
+    margin: 0 0 8px;
+    color: var(--text-color);
+    line-height: 1.55;
+    font-size: 15px;
+}
+
+.services .gt-quickload-panel .gt-quickload-panel__lead--muted {
+    margin-bottom: 12px;
+    color: var(--text-light);
+}
+
+/* 2×2 grid: wider cards suit landscape trailer photos */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 28px;
     margin-top: 0;
 }
 
@@ -867,6 +887,8 @@ p {
     overflow: hidden;
     transition: box-shadow 0.3s ease;
     box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card:hover {
@@ -874,23 +896,37 @@ p {
 }
 
 .service-image {
-    height: 240px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
+    flex-shrink: 0;
+    background: #e8eaef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    box-sizing: border-box;
 }
 
 .service-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    transition: opacity 0.3s ease;
 }
 
 .service-card:hover .service-image img {
-    transform: scale(1.05);
+    opacity: 0.92;
 }
 
 .service-content {
     padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-content h3 {
@@ -907,21 +943,63 @@ p {
     font-size: 14px;
 }
 
-.service-link {
-    color: var(--primary-color);
+/* Card CTAs: red rounded button, white label */
+.service-content .service-link,
+.service-content a.service-link:visited {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 8px;
+    margin-top: auto;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-weight: 600;
     font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    transition: background 0.2s ease, border-color 0.2s ease, gap 0.2s ease, transform 0.2s ease;
+}
+
+.service-content .service-link:hover {
+    background: #c1121f;
+    border-color: #c1121f;
+    color: var(--white);
+    gap: 12px;
+}
+
+.service-content .service-link:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 3px;
+}
+
+/* Text-style links that reuse .service-link (e.g. boat page back to top) */
+.service-link.boat-range-back-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: gap 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
+    margin-top: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 600;
+    font-size: inherit;
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
 }
 
-.service-link:hover {
+.service-link.boat-range-back-link:hover {
+    color: var(--primary-color);
     gap: 12px;
+    background: transparent;
+    border: none;
 }
 
 /* ===== BANNER SECTION (Full-width image band) ===== */
@@ -1132,7 +1210,7 @@ p {
 
 /* ===== SERVICE DETAIL SECTION ===== */
 .service-detail {
-    padding: 60px 0;
+    padding: 48px 0;
     background: var(--light-color);
 }
 
@@ -1181,15 +1259,15 @@ p {
 .service-header-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 40px;
     align-items: start;
-    margin-bottom: 48px;
+    margin-bottom: 28px;
 }
 
 .service-header-text h2 {
     font-size: 32px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     color: var(--secondary-color);
     line-height: 1.2;
 }
@@ -1197,16 +1275,21 @@ p {
 .service-header-text p {
     font-size: 15px;
     color: var(--text-color);
-    line-height: 1.7;
+    line-height: 1.55;
     font-weight: 500;
+    margin: 0 0 0.5rem;
+}
+
+.service-header-text p:last-child {
+    margin-bottom: 0;
 }
 
 /* Features Grid: Three columns */
 .service-detail .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 30px;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
 /* Jetski page: model card (image + options) + specs column */
@@ -1332,36 +1415,41 @@ p {
 /* Feature Cards */
 .feature-section {
     background: var(--white);
-    padding: 24px;
+    padding: 16px 18px;
     margin-top: 0;
     border-left: 3px solid var(--primary-color);
     height: 100%;
 }
 
 .feature-section.full-width {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .feature-section h3 {
     margin-top: 0;
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     color: var(--secondary-color);
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     border-bottom: 3px solid var(--primary-color);
     display: inline-block;
 }
 
 .feature-section p {
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     color: var(--text-light);
     font-size: 14px;
+    line-height: 1.5;
+}
+
+.feature-section p:last-child {
+    margin-bottom: 0;
 }
 
 /* Editable specification tables */
 .spec-table-section {
-    margin-top: 36px;
+    margin-top: 24px;
 }
 
 .spec-table-title {
@@ -1370,7 +1458,7 @@ p {
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #8aa8bc;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .spec-table-wrapper {
@@ -1424,15 +1512,14 @@ table.spec-table tbody tr:last-child td {
 .service-list {
     list-style: none;
     padding: 0;
-    margin: 12px 0;
+    margin: 6px 0 0;
 }
 
 .service-list li {
-    padding: 10px 0;
-    padding-left: 30px;
+    padding: 5px 0 5px 28px;
     position: relative;
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.45;
     font-size: 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     transition: padding-left 0.2s ease;
@@ -1443,7 +1530,7 @@ table.spec-table tbody tr:last-child td {
 }
 
 .service-list li:hover {
-    padding-left: 34px;
+    padding-left: 30px;
     color: var(--secondary-color);
 }
 
@@ -1453,10 +1540,11 @@ table.spec-table tbody tr:last-child td {
     font-weight: 900;
     position: absolute;
     left: 0;
+    top: 0.35em;
     color: var(--primary-color);
-    font-size: 14px;
-    width: 22px;
-    height: 22px;
+    font-size: 13px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1466,7 +1554,8 @@ table.spec-table tbody tr:last-child td {
 .service-list.service-list--two-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 clamp(24px, 4vw, 48px);
+    gap: 0 clamp(20px, 3vw, 40px);
+    row-gap: 0;
     align-items: start;
 }
 
@@ -1491,8 +1580,8 @@ table.spec-table tbody tr:last-child td {
 /* Model Cards */
 .model-card {
     background: var(--white);
-    padding: 16px;
-    margin: 12px 0;
+    padding: 12px 14px;
+    margin: 6px 0;
     border-left: 3px solid var(--secondary-color);
     transition: var(--transition);
 }
@@ -1843,19 +1932,29 @@ table.spec-table tbody tr:last-child td {
 }
 
 .product-image {
-    height: 220px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
+    background: #e8eaef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    box-sizing: border-box;
 }
 
 .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    transition: opacity 0.3s ease;
 }
 
 .product-card:hover .product-image img {
-    transform: scale(1.05);
+    opacity: 0.92;
 }
 
 .product-content {
