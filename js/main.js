@@ -92,17 +92,18 @@ function prevSlide() {
     showSlide(currentSlide - 1);
 }
 
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
+if (prevBtn && nextBtn && slides.length) {
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
 
-indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-        showSlide(index);
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
     });
-});
 
-// Auto-play slider
-setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 5000);
+}
 
 // Active Navigation Link on Scroll
 const sections = document.querySelectorAll('section[id]');
@@ -304,3 +305,62 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Gallery lightbox (digger-trailer.html and similar)
+const galleryModal = document.getElementById('galleryModal');
+const galleryModalImg = document.getElementById('galleryModalImg');
+let gallerySlideIndex = 0;
+let galleryImages = [];
+
+function openModal(thumbEl) {
+    if (!galleryModal || !galleryModalImg || !thumbEl) return;
+    galleryImages = Array.from(document.querySelectorAll('.gallery-grid .gallery-thumb img'));
+    const clicked = thumbEl.querySelector('img');
+    gallerySlideIndex = clicked ? galleryImages.indexOf(clicked) : 0;
+    if (gallerySlideIndex < 0) gallerySlideIndex = 0;
+    updateGalleryModalImage();
+    galleryModal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateGalleryModalImage() {
+    if (!galleryModalImg || !galleryImages.length) return;
+    const img = galleryImages[gallerySlideIndex];
+    galleryModalImg.src = img.src;
+    galleryModalImg.alt = img.alt || 'Gallery image';
+}
+
+function closeModal() {
+    if (!galleryModal || !galleryModalImg) return;
+    galleryModal.setAttribute('hidden', '');
+    galleryModalImg.removeAttribute('src');
+    galleryModalImg.alt = '';
+    document.body.style.overflow = '';
+}
+
+function changeSlide(dir) {
+    if (!galleryImages.length) return;
+    gallerySlideIndex += dir;
+    if (gallerySlideIndex >= galleryImages.length) gallerySlideIndex = 0;
+    if (gallerySlideIndex < 0) gallerySlideIndex = galleryImages.length - 1;
+    updateGalleryModalImage();
+}
+
+if (galleryModal) {
+    const galleryModalInner = galleryModal.querySelector('.gallery-modal__inner');
+    if (galleryModalInner) {
+        galleryModalInner.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
+    galleryModal.addEventListener('click', function () {
+        closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (!galleryModal || galleryModal.hasAttribute('hidden')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'ArrowRight') changeSlide(1);
+    });
+}

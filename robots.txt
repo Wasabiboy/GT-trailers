@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Internal inventory (not for search)
+Disallow: /admin.html
+Disallow: /image-inventory.json

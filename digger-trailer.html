@@ -157,11 +157,18 @@
             </div>
 
             <!-- Gallery Modal -->
-            <div class="gallery-modal" id="galleryModal">
-                <span class="gallery-modal__close" onclick="closeModal()">&times;</span>
-                <span class="gallery-modal__prev" onclick="changeSlide(-1)">&#10094;</span>
-                <span class="gallery-modal__next" onclick="changeSlide(1)">&#10095;</span>
-                <img class="gallery-modal__img" id="galleryModalImg" src="" alt="">
+            <div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="Gallery image"
+                hidden>
+                <div class="gallery-modal__backdrop" aria-hidden="true"></div>
+                <div class="gallery-modal__inner">
+                    <button type="button" class="gallery-modal__close" onclick="closeModal()"
+                        aria-label="Close gallery">&times;</button>
+                    <button type="button" class="gallery-modal__prev" onclick="changeSlide(-1)"
+                        aria-label="Previous image">&#10094;</button>
+                    <button type="button" class="gallery-modal__next" onclick="changeSlide(1)"
+                        aria-label="Next image">&#10095;</button>
+                    <img class="gallery-modal__img" id="galleryModalImg" src="" alt="">
+                </div>
             </div>
 
             <!-- Model Specifications Section -->

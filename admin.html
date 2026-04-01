@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image inventory — GT Trailers</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #1e293b;
+            --line: #334155;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-monospace, 'Cascadia Code', 'Consolas', monospace;
+            font-size: 13px;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding: 1.25rem;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 0.25rem;
+            letter-spacing: 0.02em;
+        }
+
+        .sub {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 1rem;
+            max-width: 1200px;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .toolbar input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .toolbar input::placeholder {
+            color: var(--muted);
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: var(--line);
+            color: var(--text);
+        }
+
+        .err {
+            color: #f87171;
+            padding: 1rem;
+            border: 1px solid #7f1d1d;
+            border-radius: 8px;
+            background: #450a0a;
+            max-width: 1200px;
+        }
+
+        .err code {
+            color: #fecaca;
+        }
+
+        ul.tree {
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+        }
+
+        ul.tree ul {
+            list-style: none;
+            margin: 0.25rem 0 0.5rem;
+            padding-left: 1.25rem;
+            border-left: 1px solid var(--line);
+        }
+
+        .tree details {
+            margin: 0.15rem 0;
+        }
+
+        .tree summary {
+            cursor: pointer;
+            color: var(--accent);
+            user-select: none;
+        }
+
+        .tree summary:hover {
+            text-decoration: underline;
+        }
+
+        .tree li.file {
+            margin: 0.2rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .tree li.file code {
+            color: #cbd5e1;
+            word-break: break-all;
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 11px;
+            margin-left: 0.5rem;
+        }
+
+        .tree li.file.hidden,
+        .tree details.hidden {
+            display: none;
+        }
+
+        .foot {
+            margin-top: 1.25rem;
+            color: var(--muted);
+            font-size: 11px;
+            max-width: 1200px;
+        }
+
+        .foot a {
+            color: var(--accent);
+        }
+
+        .copy-btn {
+            margin-left: 0.35rem;
+            padding: 0.1rem 0.35rem;
+            font-size: 10px;
+            border-radius: 4px;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--muted);
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .copy-btn:hover {
+            color: var(--text);
+            border-color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Image inventory</h1>
+    <p class="sub">Internal reference — not linked from the public menu. Regenerate data with
+        <code>node scripts/generate-image-inventory.mjs</code></p>
+
+    <div id="app">
+        <p class="sub" id="loading">Loading image-inventory.json…</p>
+    </div>
+
+    <p class="foot" id="foot" hidden>
+        Served paths are relative to site root. Open this page via your host (e.g. Netlify) or <code>npx serve</code> —
+        <code>file://</code> may block JSON fetch.
+        · <a href="index.html">Home</a>
+    </p>
+
+    <script>
+        function formatBytes(n) {
+            if (n < 1024) return n + ' B';
+            if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+            return (n / (1024 * 1024)).toFixed(2) + ' MB';
+        }
+
+        function escapeHtml(s) {
+            return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function filterTree(ul, q) {
+            if (!q) {
+                ul.querySelectorAll('.hidden').forEach(function (el) { el.classList.remove('hidden'); });
+                ul.querySelectorAll('details').forEach(function (d) { d.open = true; });
+                return;
+            }
+            var lower = q.toLowerCase();
+            function walkLi(li) {
+                if (li.classList.contains('file')) {
+                    var text = li.textContent.toLowerCase();
+                    var show = text.indexOf(lower) !== -1;
+                    li.classList.toggle('hidden', !show);
+                    return show;
+                }
+                var det = li.querySelector(':scope > details');
+                if (!det) return false;
+                var nested = det.querySelector(':scope > ul');
+                var any = false;
+                nested.querySelectorAll(':scope > li').forEach(function (child) {
+                    if (walkLi(child)) any = true;
+                });
+                var name = (det.querySelector('summary') && det.querySelector('summary').textContent || '').toLowerCase();
+                if (name.indexOf(lower) !== -1) any = true;
+                det.classList.toggle('hidden', !any);
+                if (any) det.open = true;
+                return any;
+            }
+            ul.querySelectorAll(':scope > li').forEach(function (li) { walkLi(li); });
+        }
+
+        function renderTree(node) {
+            if (node.type === 'file') {
+                var li = document.createElement('li');
+                li.className = 'file';
+                li.innerHTML = '<code>' + escapeHtml(node.path) + '</code>' +
+                    '<span class="meta">' + escapeHtml(node.ext) + ' · ' + formatBytes(node.size) + '</span>' +
+                    '<button type="button" class="copy-btn" data-path="' + escapeHtml(node.path) + '">Copy</button>';
+                return li;
+            }
+            var li = document.createElement('li');
+            var det = document.createElement('details');
+            det.open = true;
+            var sum = document.createElement('summary');
+            sum.textContent = node.name + '/';
+            det.appendChild(sum);
+            var ul = document.createElement('ul');
+            (node.children || []).forEach(function (ch) {
+                ul.appendChild(renderTree(ch));
+            });
+            det.appendChild(ul);
+            li.appendChild(det);
+            return li;
+        }
+
+        var app = document.getElementById('app');
+        var foot = document.getElementById('foot');
+
+        fetch('image-inventory.json', { cache: 'no-store' })
+            .then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            })
+            .then(function (data) {
+                app.innerHTML = '';
+                var panel = document.createElement('div');
+                panel.className = 'panel';
+
+                var tb = document.createElement('div');
+                tb.className = 'toolbar';
+                var inp = document.createElement('input');
+                inp.type = 'search';
+                inp.placeholder = 'Filter by path or filename…';
+                inp.setAttribute('aria-label', 'Filter');
+                tb.appendChild(inp);
+
+                var gen = document.createElement('span');
+                gen.className = 'badge';
+                gen.textContent = 'Generated: ' + (data.generatedAt || '?').replace('T', ' ').slice(0, 19) + 'Z';
+                tb.appendChild(gen);
+
+                if (data.summary) {
+                    var s = document.createElement('span');
+                    s.className = 'badge';
+                    s.textContent = data.summary.folders + ' folders · ' + data.summary.imageFiles + ' images';
+                    tb.appendChild(s);
+                }
+
+                panel.appendChild(tb);
+
+                var treeRoots = [];
+                data.forests.forEach(function (forest) {
+                    var h = document.createElement('div');
+                    h.style.marginBottom = '0.5rem';
+                    h.style.color = 'var(--muted)';
+                    h.textContent = 'Root: ' + forest.root;
+                    panel.appendChild(h);
+                    var ul = document.createElement('ul');
+                    ul.className = 'tree';
+                    ul.appendChild(renderTree(forest.tree));
+                    panel.appendChild(ul);
+                    treeRoots.push(ul);
+                });
+                inp.addEventListener('input', function () {
+                    var q = inp.value.trim();
+                    treeRoots.forEach(function (ul) { filterTree(ul, q); });
+                });
+
+                if (data.missingRoots && data.missingRoots.length) {
+                    var m = document.createElement('p');
+                    m.style.color = 'var(--muted)';
+                    m.textContent = 'Optional roots not found: ' + data.missingRoots.join(', ');
+                    panel.appendChild(m);
+                }
+
+                app.appendChild(panel);
+                foot.hidden = false;
+
+                panel.addEventListener('click', function (e) {
+                    var btn = e.target.closest('.copy-btn');
+                    if (!btn || !btn.dataset.path) return;
+                    navigator.clipboard.writeText(btn.dataset.path).then(function () {
+                        var t = btn.textContent;
+                        btn.textContent = 'OK';
+                        setTimeout(function () { btn.textContent = t; }, 900);
+                    });
+                });
+            })
+            .catch(function (err) {
+                app.innerHTML = '<div class="err"><strong>Could not load image-inventory.json</strong><br><br>' +
+                    escapeHtml(String(err.message)) +
+                    '<br><br>Run from project root:<br><code>node scripts/generate-image-inventory.mjs</code><br><br>' +
+                    'Serve the site over HTTP (not file://) so fetch works, e.g. <code>npx serve</code></div>';
+            });
+    </script>
+</body>
+
+</html>

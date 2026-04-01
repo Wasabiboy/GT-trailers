@@ -1,0 +1,570 @@
+{
+  "generatedAt": "2026-04-01T17:57:36.346Z",
+  "project": "GT-Trailers",
+  "roots": [
+    "images"
+  ],
+  "missingRoots": [],
+  "forests": [
+    {
+      "root": "images",
+      "tree": {
+        "type": "dir",
+        "name": "images",
+        "path": "images",
+        "children": [
+          {
+            "type": "dir",
+            "name": "accessories",
+            "path": "images/accessories",
+            "children": [
+              {
+                "type": "file",
+                "name": "alloy-wheels.jpg",
+                "path": "images/accessories/alloy-wheels.jpg",
+                "ext": ".jpg",
+                "size": 19678
+              },
+              {
+                "type": "file",
+                "name": "cage-attachments.jpg",
+                "path": "images/accessories/cage-attachments.jpg",
+                "ext": ".jpg",
+                "size": 24170
+              },
+              {
+                "type": "file",
+                "name": "coupling-guards.jpg",
+                "path": "images/accessories/coupling-guards.jpg",
+                "ext": ".jpg",
+                "size": 27897
+              },
+              {
+                "type": "file",
+                "name": "jetski-215-50-12-wheels.jpg",
+                "path": "images/accessories/jetski-215-50-12-wheels.jpg",
+                "ext": ".jpg",
+                "size": 68063
+              },
+              {
+                "type": "file",
+                "name": "jetski-alloy-wheels.jpg",
+                "path": "images/accessories/jetski-alloy-wheels.jpg",
+                "ext": ".jpg",
+                "size": 53935
+              },
+              {
+                "type": "file",
+                "name": "jetski-custom.jpg",
+                "path": "images/accessories/jetski-custom.jpg",
+                "ext": ".jpg",
+                "size": 56899
+              },
+              {
+                "type": "file",
+                "name": "jetski-extendable-draw-bar.jpg",
+                "path": "images/accessories/jetski-extendable-draw-bar.jpg",
+                "ext": ".jpg",
+                "size": 56388
+              },
+              {
+                "type": "file",
+                "name": "jetski-quad.jpg",
+                "path": "images/accessories/jetski-quad.jpg",
+                "ext": ".jpg",
+                "size": 81471
+              },
+              {
+                "type": "file",
+                "name": "jetski-spare-wheel-mount.jpg",
+                "path": "images/accessories/jetski-spare-wheel-mount.jpg",
+                "ext": ".jpg",
+                "size": 46298
+              },
+              {
+                "type": "file",
+                "name": "jetski-tandam.jpg",
+                "path": "images/accessories/jetski-tandam.jpg",
+                "ext": ".jpg",
+                "size": 55427
+              },
+              {
+                "type": "file",
+                "name": "jetski-windup-jockey-wheel.jpg",
+                "path": "images/accessories/jetski-windup-jockey-wheel.jpg",
+                "ext": ".jpg",
+                "size": 46848
+              },
+              {
+                "type": "file",
+                "name": "large-lockable-bin.jpg",
+                "path": "images/accessories/large-lockable-bin.jpg",
+                "ext": ".jpg",
+                "size": 22452
+              },
+              {
+                "type": "file",
+                "name": "longer-ramps-mesh.jpg",
+                "path": "images/accessories/longer-ramps-mesh.jpg",
+                "ext": ".jpg",
+                "size": 23912
+              },
+              {
+                "type": "file",
+                "name": "small-lockable-bin.jpg",
+                "path": "images/accessories/small-lockable-bin.jpg",
+                "ext": ".jpg",
+                "size": 24046
+              },
+              {
+                "type": "file",
+                "name": "spare-wheel-mount.jpg",
+                "path": "images/accessories/spare-wheel-mount.jpg",
+                "ext": ".jpg",
+                "size": 24392
+              },
+              {
+                "type": "file",
+                "name": "wheel-nut-indicators.jpg",
+                "path": "images/accessories/wheel-nut-indicators.jpg",
+                "ext": ".jpg",
+                "size": 23705
+              }
+            ]
+          },
+          {
+            "type": "dir",
+            "name": "Banners",
+            "path": "images/Banners",
+            "children": [
+              {
+                "type": "file",
+                "name": "tasman-engineering-01.png",
+                "path": "images/Banners/tasman-engineering-01.png",
+                "ext": ".png",
+                "size": 1223165
+              },
+              {
+                "type": "file",
+                "name": "tasman-engineering-02.png",
+                "path": "images/Banners/tasman-engineering-02.png",
+                "ext": ".png",
+                "size": 1220145
+              },
+              {
+                "type": "file",
+                "name": "tasman-engineering-03.png",
+                "path": "images/Banners/tasman-engineering-03.png",
+                "ext": ".png",
+                "size": 864287
+              }
+            ]
+          },
+          {
+            "type": "file",
+            "name": "accessories-trailers.jpg",
+            "path": "images/accessories-trailers.jpg",
+            "ext": ".jpg",
+            "size": 215012
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-contractorhero.png",
+            "path": "images/fullwidthimage-contractorhero.png",
+            "ext": ".png",
+            "size": 160573
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-DIGGER-TRAILERhero.png",
+            "path": "images/fullwidthimage-DIGGER-TRAILERhero.png",
+            "ext": ".png",
+            "size": 296547
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-handymanhero.png",
+            "path": "images/fullwidthimage-handymanhero.png",
+            "ext": ".png",
+            "size": 183265
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-jetskihero.png",
+            "path": "images/fullwidthimage-jetskihero.png",
+            "ext": ".png",
+            "size": 113408
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-largeboathero.png",
+            "path": "images/fullwidthimage-largeboathero.png",
+            "ext": ".png",
+            "size": 203936
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-mediumtrailerhero.png",
+            "path": "images/fullwidthimage-mediumtrailerhero.png",
+            "ext": ".png",
+            "size": 206621
+          },
+          {
+            "type": "file",
+            "name": "fullwidthimage-smallboathero.png",
+            "path": "images/fullwidthimage-smallboathero.png",
+            "ext": ".png",
+            "size": 111103
+          },
+          {
+            "type": "file",
+            "name": "GT Digger Trailer.png",
+            "path": "images/GT Digger Trailer.png",
+            "ext": ".png",
+            "size": 655871
+          },
+          {
+            "type": "file",
+            "name": "GT Digger Utility Trailer.jpg",
+            "path": "images/GT Digger Utility Trailer.jpg",
+            "ext": ".jpg",
+            "size": 764013
+          },
+          {
+            "type": "file",
+            "name": "GT TRAILERS_LOGO.png",
+            "path": "images/GT TRAILERS_LOGO.png",
+            "ext": ".png",
+            "size": 67757
+          },
+          {
+            "type": "file",
+            "name": "GT-Trailer-Logo-2025.png",
+            "path": "images/GT-Trailer-Logo-2025.png",
+            "ext": ".png",
+            "size": 11269
+          },
+          {
+            "type": "file",
+            "name": "GT-Trailer-Logo-2025.svg",
+            "path": "images/GT-Trailer-Logo-2025.svg",
+            "ext": ".svg",
+            "size": 49154
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-01.png",
+            "path": "images/gt-trailers-01.png",
+            "ext": ".png",
+            "size": 146246
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-02.png",
+            "path": "images/gt-trailers-02.png",
+            "ext": ".png",
+            "size": 284982
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-03.png",
+            "path": "images/gt-trailers-03.png",
+            "ext": ".png",
+            "size": 407751
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-04.png",
+            "path": "images/gt-trailers-04.png",
+            "ext": ".png",
+            "size": 2524164
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-05.png",
+            "path": "images/gt-trailers-05.png",
+            "ext": ".png",
+            "size": 34256
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-06.jpg",
+            "path": "images/gt-trailers-06.jpg",
+            "ext": ".jpg",
+            "size": 418328
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-07.jpg",
+            "path": "images/gt-trailers-07.jpg",
+            "ext": ".jpg",
+            "size": 455619
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-08.jpg",
+            "path": "images/gt-trailers-08.jpg",
+            "ext": ".jpg",
+            "size": 383891
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-09.jpg",
+            "path": "images/gt-trailers-09.jpg",
+            "ext": ".jpg",
+            "size": 476116
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-10.jpg",
+            "path": "images/gt-trailers-10.jpg",
+            "ext": ".jpg",
+            "size": 407139
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-11.jpg",
+            "path": "images/gt-trailers-11.jpg",
+            "ext": ".jpg",
+            "size": 373011
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-12.jpg",
+            "path": "images/gt-trailers-12.jpg",
+            "ext": ".jpg",
+            "size": 632563
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-13.png",
+            "path": "images/gt-trailers-13.png",
+            "ext": ".png",
+            "size": 2160964
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-14.png",
+            "path": "images/gt-trailers-14.png",
+            "ext": ".png",
+            "size": 1083528
+          },
+          {
+            "type": "file",
+            "name": "gt-trailers-15.png",
+            "path": "images/gt-trailers-15.png",
+            "ext": ".png",
+            "size": 582462
+          },
+          {
+            "type": "file",
+            "name": "GT-TRAILERS-LOGO.png",
+            "path": "images/GT-TRAILERS-LOGO.png",
+            "ext": ".png",
+            "size": 51734
+          },
+          {
+            "type": "file",
+            "name": "JETSKI ACTION.png",
+            "path": "images/JETSKI ACTION.png",
+            "ext": ".png",
+            "size": 1623094
+          },
+          {
+            "type": "file",
+            "name": "jockie-wheel.png",
+            "path": "images/jockie-wheel.png",
+            "ext": ".png",
+            "size": 30449
+          },
+          {
+            "type": "file",
+            "name": "logowithflag.png",
+            "path": "images/logowithflag.png",
+            "ext": ".png",
+            "size": 22469
+          },
+          {
+            "type": "file",
+            "name": "SetHeight40-gtheaderlogo2.png",
+            "path": "images/SetHeight40-gtheaderlogo2.png",
+            "ext": ".png",
+            "size": 9287
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-contractor02.png",
+            "path": "images/SetWidth213-contractor02.png",
+            "ext": ".png",
+            "size": 27725
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-digger01.png",
+            "path": "images/SetWidth213-digger01.png",
+            "ext": ".png",
+            "size": 77640
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-hardwarefb.png",
+            "path": "images/SetWidth213-hardwarefb.png",
+            "ext": ".png",
+            "size": 20079
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-hardwarefb2.png",
+            "path": "images/SetWidth213-hardwarefb2.png",
+            "ext": ".png",
+            "size": 54667
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-hardwarefb3.png",
+            "path": "images/SetWidth213-hardwarefb3.png",
+            "ext": ".png",
+            "size": 26552
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-jetskiimage.png",
+            "path": "images/SetWidth213-jetskiimage.png",
+            "ext": ".png",
+            "size": 56877
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-jetskitrailer.png",
+            "path": "images/SetWidth213-jetskitrailer.png",
+            "ext": ".png",
+            "size": 17079
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-mediumboatimage.png",
+            "path": "images/SetWidth213-mediumboatimage.png",
+            "ext": ".png",
+            "size": 75818
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-smallBoat.png",
+            "path": "images/SetWidth213-smallBoat.png",
+            "ext": ".png",
+            "size": 67679
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-smallboattrailer.png",
+            "path": "images/SetWidth213-smallboattrailer.png",
+            "ext": ".png",
+            "size": 16941
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-specialfb1.png",
+            "path": "images/SetWidth213-specialfb1.png",
+            "ext": ".png",
+            "size": 72535
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-specialfb2.png",
+            "path": "images/SetWidth213-specialfb2.png",
+            "ext": ".png",
+            "size": 72110
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-specialfb3.png",
+            "path": "images/SetWidth213-specialfb3.png",
+            "ext": ".png",
+            "size": 63694
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-specialfb5.png",
+            "path": "images/SetWidth213-specialfb5.png",
+            "ext": ".png",
+            "size": 69985
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-specialfb6.png",
+            "path": "images/SetWidth213-specialfb6.png",
+            "ext": ".png",
+            "size": 71039
+          },
+          {
+            "type": "file",
+            "name": "SetWidth213-specialfb7.png",
+            "path": "images/SetWidth213-specialfb7.png",
+            "ext": ".png",
+            "size": 71656
+          },
+          {
+            "type": "file",
+            "name": "SetWidth237-hardware04.png",
+            "path": "images/SetWidth237-hardware04.png",
+            "ext": ".png",
+            "size": 66933
+          },
+          {
+            "type": "file",
+            "name": "SetWidth313-boattrailors46.png",
+            "path": "images/SetWidth313-boattrailors46.png",
+            "ext": ".png",
+            "size": 92456
+          },
+          {
+            "type": "file",
+            "name": "SetWidth313-fbharwarerollover48.png",
+            "path": "images/SetWidth313-fbharwarerollover48.png",
+            "ext": ".png",
+            "size": 72306
+          },
+          {
+            "type": "file",
+            "name": "SetWidth313-trailers44.png",
+            "path": "images/SetWidth313-trailers44.png",
+            "ext": ".png",
+            "size": 91015
+          },
+          {
+            "type": "file",
+            "name": "slideshowimagecropped-sliderguarenteed2.png",
+            "path": "images/slideshowimagecropped-sliderguarenteed2.png",
+            "ext": ".png",
+            "size": 709153
+          },
+          {
+            "type": "file",
+            "name": "trailer-coupling.png",
+            "path": "images/trailer-coupling.png",
+            "ext": ".png",
+            "size": 59719
+          },
+          {
+            "type": "file",
+            "name": "winches.png",
+            "path": "images/winches.png",
+            "ext": ".png",
+            "size": 39906
+          },
+          {
+            "type": "file",
+            "name": "wobble rollers-largeboattrailer.png",
+            "path": "images/wobble rollers-largeboattrailer.png",
+            "ext": ".png",
+            "size": 36980
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "imageFiles": 76,
+    "folders": 3
+  }
+}
