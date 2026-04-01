@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-clock"></i> Mon - Fri: 7.30am - 4.30pm</span>
+                    <span><i class="fas fa-map-marker-alt"></i> 305D Neilson St, Onehunga, Auckland</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="tel:096367437"><i class="fas fa-phone"></i> 09 636 7437</a>
+                    <a href="mailto:sales@gttrailers.co.nz"><i class="fas fa-envelope"></i> sales@gttrailers.co.nz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -15,25 +31,19 @@
                 <div class="logo">
                     <a href="index.html"><img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers"></a>
                 </div>
-                <div class="navbar-wrapper">
-                    <div class="header-contact">
-                        <span class="header-phone"><a href="tel:+6496367437"><i class="fas fa-phone"></i> 09 636 7437</a></span>
-                        <span class="header-email"><i class="fas fa-envelope"></i> sales@gttrailers.co.nz</span>
-                    </div>
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="index.html#home">HOME</a></li>
-                        <li><a href="index.html#services">TRAILERS</a></li>
-                        <li class="dropdown">
-                            <a href="boat-trailers.html" class="active">BOAT TRAILERS <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="boat-trailers.html">All Boat Trailers</a></li>
-                                <li><a href="jetskis.html">Jetski Trailers</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="hardware.html">HARDWARE</a></li>
-                        <li><a href="contact.html">CONTACT US</a></li>
-                    </ul>
-                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#home">HOME</a></li>
+                    <li><a href="index.html#services">TRAILERS</a></li>
+                    <li class="dropdown">
+                        <a href="boat-trailers.html" class="active">BOAT TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="boat-trailers.html">All Boat Trailers</a></li>
+                            <li><a href="jetskis.html">Jetski Trailers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="hardware.html">HARDWARE</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -298,24 +308,18 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
+                <div class="footer-column footer-column--brand">
                     <div class="footer-logo">
                         <img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers">
                     </div>
-                    <p>GT Trailers provides quality trailer solutions for all your hauling needs. From boat trailers to utility trailers, we build trailers that stand the test of time.</p>
+                    <p>GT Trailers provides quality trailer solutions for all your hauling needs. From boat trailers to
+                        utility trailers, we build trailers that stand the test of time.</p>
                 </div>
                 <div class="footer-column">
-                    <h4 class="footer-dropdown-toggle">
-                        <a href="boat-trailers.html">Boat Trailers <i class="fas fa-chevron-down"></i></a>
-                    </h4>
-                    <ul class="footer-dropdown-menu">
-                        <li><a href="boat-trailers.html">All Boat Trailers</a></li>
-                        <li><a href="jetskis.html">Jetski Trailers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Our Trailers</h4>
+                    <h4>Products</h4>
                     <ul>
+                        <li><a href="boat-trailers.html">Boat Trailers</a></li>
+                        <li><a href="jetskis.html">Jetski Trailers</a></li>
                         <li><a href="handyman-trailer.html">Handyman Trailer</a></li>
                         <li><a href="contractor-trailer.html">Contractor Trailer</a></li>
                         <li><a href="digger-trailer.html">Digger Trailer</a></li>
@@ -324,26 +328,30 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Quick Links</h4>
+                    <h4>Information</h4>
                     <ul>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#services">Our Trailers</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 305D Neilson Street, Onehunga, Auckland 1061, New Zealand</li>
-                        <li><i class="fas fa-phone"></i> 09 636 7437</li>
-                        <li><i class="fas fa-envelope"></i> sales@gttrailers.co.nz</li>
-                        <li><i class="fas fa-clock"></i> Monday - Friday, 7.30am to 4.30pm</li>
+                    <h4>Contact</h4>
+                    <ul class="footer-contact-list">
+                        <li><i class="fas fa-phone"></i> <a href="tel:096367437">09 636 7437</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:sales@gttrailers.co.nz">sales@gttrailers.co.nz</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> 305D Neilson Street, Onehunga, Auckland 1061</li>
+                        <li><i class="fas fa-clock"></i> Mon - Fri, 7.30am - 4.30pm</li>
                     </ul>
                 </div>
             </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
             <div class="footer-bottom">
-                <p>Copyright © 2026 GT Trailers. All Rights Reserved.</p>
+                <p>Copyright &copy; <span id="currentYear"></span> GT Trailers. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
