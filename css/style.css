@@ -120,7 +120,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0% 0;
+    padding: 20px 0;
     flex-wrap: wrap;
     gap: 00px;
 }
@@ -193,7 +193,7 @@ p {
 }
 
 .logo img {
-    height: 200px;
+    height: 120px;
     width: auto;
     display: block;
 }
@@ -1461,6 +1461,101 @@ p {
 }
 
 /* Editable specification tables (boat / jetski pages) */
+/* Parts & Accessories Grid */
+.parts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.parts-card {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.parts-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.parts-card__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.parts-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.parts-card__name {
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+@media (max-width: 992px) {
+    .parts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.gallery-thumb {
+    display: block;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.gallery-thumb:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .parts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .spec-table-section {
     margin-top: 48px;
 }
@@ -1749,7 +1844,8 @@ table.spec-table tbody tr:last-child td {
 }
 
 .footer-logo img {
-    height: 50px;
+    width: 60%;
+    height: auto;
     margin-bottom: 20px;
 }
 
