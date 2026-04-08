@@ -293,6 +293,10 @@ p {
 
 /* Mobile dropdown styles */
 @media (max-width: 768px) {
+    .nav-menu .dropdown > a {
+        justify-content: center;
+    }
+
     .nav-menu .dropdown-menu {
         position: static;
         opacity: 1;
@@ -311,14 +315,15 @@ p {
     }
 
     .nav-menu .dropdown-menu a {
-        padding: 12px 20px 12px 40px;
+        padding: 12px 20px;
         color: var(--white);
         font-size: 14px;
+        text-align: center;
     }
 
     .nav-menu .dropdown-menu a:hover {
         background: rgba(255, 255, 255, 0.1);
-        padding-left: 45px;
+        padding: 12px 20px;
     }
 }
 
