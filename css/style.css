@@ -99,53 +99,13 @@ p {
     font-weight: 600;
 }
 
-/* ===== TOP BAR ===== */
-.top-bar {
-    background: var(--secondary-color);
-    color: var(--white);
-    font-size: 13px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.top-bar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.top-bar-left,
-.top-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.top-bar-left span,
-.top-bar-right a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.2s ease;
-}
-
-.top-bar-right a:hover {
-    color: var(--white);
-}
-
-.top-bar-left i,
-.top-bar-right i {
-    color: var(--primary-color);
-    font-size: 12px;
-}
-
 /* ===== HEADER ===== */
 .header {
     background: var(--secondary-color);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    padding-top: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -155,10 +115,23 @@ p {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 0;
     height: 80px;
+    gap: 16px;
+}
+
+.navbar-start {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    gap: 12px 28px;
+}
+
+.nav-phone {
+    list-style: none;
 }
 
 .logo a {
@@ -220,6 +193,31 @@ p {
 
 .nav-menu a.active {
     color: var(--primary-color);
+}
+
+.nav-menu .nav-phone-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    padding: 28px 12px 28px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-menu .nav-phone-link:hover {
+    color: var(--white);
+}
+
+.nav-menu .nav-phone-link::after,
+.nav-menu .nav-phone-link:hover::after {
+    display: none;
 }
 
 /* Dropdown Menu Styles */
@@ -329,6 +327,7 @@ p {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    margin-left: auto;
 }
 
 .hamburger span {
@@ -847,6 +846,42 @@ p {
     line-height: 1.35;
 }
 
+.accessories-grid .accessory-cell {
+    cursor: pointer;
+}
+
+.accessories-grid .accessory-cell:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.accessories-grid .accessory-cell:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.accessories-grid .accessory-cell:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.accessory-modal__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: min(96vw, 1400px);
+}
+
+.accessory-modal__caption {
+    margin: 14px 0 0;
+    padding: 0 12px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: clamp(15px, 2.4vw, 18px);
+    font-weight: 600;
+    line-height: 1.35;
+    max-width: 90vw;
+}
+
 /* Boat trailers page: left-aligned intro + Quickload block above cards */
 .services-intro--left {
     text-align: left;
@@ -932,19 +967,16 @@ p {
     overflow: hidden;
     flex-shrink: 0;
     background: #e8eaef;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 14px;
+    position: relative;
     box-sizing: border-box;
 }
 
 .service-image img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     transition: opacity 0.3s ease;
 }
@@ -1387,10 +1419,35 @@ p {
 /* Header Row: Image + Heading/Description */
 .service-header-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* minmax(0, 1fr) prevents column blow-out from large images overlapping the text column */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 40px;
     align-items: start;
     margin-bottom: 28px;
+}
+
+.service-header-row .service-detail-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    align-self: stretch;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.service-header-row .service-detail-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.service-header-row .service-header-text {
+    min-width: 0;
 }
 
 .service-header-text h2 {
@@ -1565,6 +1622,11 @@ p {
 
 .feature-section.full-width {
     margin-top: 20px;
+}
+
+/* Contractor page: two columns above full-width model table */
+.contractor-features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .feature-section h3 {
@@ -2398,10 +2460,6 @@ table.spec-table tbody tr:last-child td {
 
 /* Mobile */
 @media (max-width: 768px) {
-    .top-bar {
-        display: none;
-    }
-
     .navbar {
         height: 64px;
     }
@@ -2457,6 +2515,20 @@ table.spec-table tbody tr:last-child td {
     .nav-menu a.active {
         background: var(--primary-color);
         color: var(--white);
+    }
+
+    .nav-phone .nav-phone-link {
+        justify-content: center;
+        color: var(--white);
+        padding: 14px 20px;
+        width: 100%;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-phone .nav-phone-link:hover {
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.2);
     }
 
     .nav-menu.active {
@@ -2539,7 +2611,7 @@ table.spec-table tbody tr:last-child td {
     }
 
     .service-header-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 24px;
         margin-bottom: 30px;
     }
@@ -2556,6 +2628,11 @@ table.spec-table tbody tr:last-child td {
     .service-detail-image {
         position: static;
         padding: 12px;
+    }
+
+    .service-header-row .service-detail-image {
+        position: relative;
+        padding: 0;
     }
 
     .service-header-text h2,

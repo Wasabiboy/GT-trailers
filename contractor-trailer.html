@@ -8,30 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-bar-left">
-                    <span><i class="fas fa-clock"></i> Mon - Fri: 7.30am - 4.30pm</span>
-                    <span><i class="fas fa-map-marker-alt"></i> 305D Neilson St, Onehunga, Auckland</span>
-                </div>
-                <div class="top-bar-right">
-                    <a href="tel:096367437"><i class="fas fa-phone"></i> 09 636 7437</a>
-                    <a href="mailto:sales@gttrailers.co.nz"><i class="fas fa-envelope"></i> sales@gttrailers.co.nz</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Header -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <div class="logo">
-                    <a href="index.html"><img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers"></a>
-                </div>
-                <ul class="nav-menu" id="navMenu">
+                <div class="navbar-start">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers"></a>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html#home">HOME</a></li>
                     <li><a href="index.html#services" class="active">TRAILERS</a></li>
                     <li class="dropdown">
@@ -43,7 +28,11 @@
                     </li>
                     <li><a href="hardware.html">HARDWARE</a></li>
                     <li><a href="contact.html">CONTACT US</a></li>
+                    <li class="nav-phone">
+                        <a href="tel:096367437" class="nav-phone-link" aria-label="Phone GT Trailers"><i class="fas fa-phone" aria-hidden="true"></i> 09 636 7437</a>
+                    </li>
                 </ul>
+                </div>
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -74,61 +63,94 @@
                 </div>
                 <div class="service-header-text">
                     <h2>GT Contractor Trailers</h2>
-                    <p>The GT Contractor Trailers are designed and built to withstand day after day of hard, rugged treatment in the commercial environment. Thanks to the new monocoque construction system, these Contractor Trailers are stronger but lighter. They utilise the same specifications as our heavier duty Digger and Transport Trailers.</p>
+                    <p>GT Contractor Trailers are designed and built to withstand day after day of hard, rugged treatment in the commercial environment. They utilise the same specifications as our heavier duty Digger and Transport Trailers.</p>
                 </div>
             </div>
             
-            <!-- Second Row: Three Feature Sections Side by Side -->
-            <div class="features-grid">
+            <div class="features-grid contractor-features-grid">
                 <div class="feature-section">
                     <h3>Standard Features</h3>
                     <ul class="service-list">
-                        <li>Welded Treadplate construction</li>
-                        <li>Fully galvanised steel</li>
-                        <li>Heavy-duty leaf springs</li>
-                        <li>18mm hardwood marine ply decks</li>
-                        <li>Jockey Wheel for easy handling & manoeuvring</li>
-                        <li>Hinged tailgates & tie hooks around chassis</li>
-                        <li>Tipping option - single axle models</li>
-                        <li>Tail and front gates become ramps</li>
-                        <li>Recessed lights, wiring and plugs to NZ Standards</li>
+                        <li>Welded steel/tread plate construction</li>
+                        <li>Fully hot-dip galvanised</li>
+                        <li>Single or tandem axle</li>
+                        <li>Laminated marine plywood deck</li>
+                        <li>Hinged tailgates &amp; tie hooks around chassis</li>
                     </ul>
-                </div>
-                
-                <div class="feature-section">
-                    <h3>Eight Model Options</h3>
-                    <div class="model-card">
-                        <strong>CT8x4</strong> Deck 2.4m x 1.2m
-                    </div>
-                    <div class="model-card">
-                        <strong>CT8x4TD</strong> Tipping Deck 2.4m x 1.2m
-                    </div>
-                    <div class="model-card">
-                        <strong>CT8x4TA</strong> Tandem Axle Deck 2.4m x 1.2m
-                    </div>
-                    <div class="model-card">
-                        <strong>CT8x5</strong> Deck 2.4m x 1.5m
-                    </div>
-                    <div class="model-card">
-                        <strong>CT8x5TD</strong> Tipping Deck 2.4m x 1.5m
-                    </div>
-                    <div class="model-card">
-                        <strong>CT8x5TA</strong> Tandem Axle Deck 2.4m x 1.5m
-                    </div>
-                    <div class="model-card">
-                        <strong>CT10x5TA</strong> Tandem Axle Deck 3.0m x 1.5m
-                    </div>
                 </div>
                 
                 <div class="feature-section">
                     <h3>Optional Extras</h3>
                     <ul class="service-list">
-                        <li>Tipping Models (single axle only)</li>
-                        <li>Galvanised Mesh Cage 1m or 400mm high</li>
-                        <li>H-Racks</li>
-                        <li>Spare Wheel Mount</li>
+                        <li>Galvanised mesh cage</li>
+                        <li>Spare wheel mount</li>
+                        <li>H-racks for long loads</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="feature-section full-width">
+                <h3>Model Specifications</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background-color: var(--secondary-color); color: white;">
+                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">MODEL</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">DECK AREA</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">LOAD CAPACITY</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">AXLE</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">GVM</th>
+                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">TYRE SIZE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT8x4</strong></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">2.44m &times; 1.22m</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1200kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Single</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1500kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">185/R14</td>
+                            </tr>
+                            <tr style="background-color: #f9f9f9;">
+                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT8x5</strong></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">2.44m &times; 1.52m</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1200kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Single</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1500kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">185/R14</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT8x5TA</strong></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">2.44m &times; 1.52m</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1600kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Tandem*</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">2000kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">165/R13</td>
+                            </tr>
+                            <tr style="background-color: #f9f9f9;">
+                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT10x5</strong></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">3.05m &times; 1.52m</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1200kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Single</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1500kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">185/R14</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT10x5TA</strong></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">3.05m &times; 1.52m</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">1600kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">Tandem*</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">2000kg</td>
+                                <td style="padding: 10px; border: 1px solid #ddd;">165/R13</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 16px; font-size: 14px; color: var(--text-light); line-height: 1.55;">
+                    <strong>GVM</strong> = Gross Vehicle Mass (total max. weight of trailer &amp; load). <strong>TA</strong> = Tandem Axle.<br>
+                    *Hydraulic brakes units fitted at extra cost.
+                </p>
             </div>
         </div>
     </section>

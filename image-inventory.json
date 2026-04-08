@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T19:43:41.508Z",
+  "generatedAt": "2026-04-08T06:05:31.241Z",
   "project": "GT-Trailers",
   "roots": [
     "images"
@@ -27,10 +27,31 @@
               },
               {
                 "type": "file",
+                "name": "Alloy-Wheels.png",
+                "path": "images/accessories/Alloy-Wheels.png",
+                "ext": ".png",
+                "size": 4810293
+              },
+              {
+                "type": "file",
                 "name": "cage-attachments.jpg",
                 "path": "images/accessories/cage-attachments.jpg",
                 "ext": ".jpg",
                 "size": 24170
+              },
+              {
+                "type": "file",
+                "name": "Cage-for-Attachments.png",
+                "path": "images/accessories/Cage-for-Attachments.png",
+                "ext": ".png",
+                "size": 4767584
+              },
+              {
+                "type": "file",
+                "name": "Coupling-and-Brake-Guard.png",
+                "path": "images/accessories/Coupling-and-Brake-Guard.png",
+                "ext": ".png",
+                "size": 4220382
               },
               {
                 "type": "file",
@@ -104,6 +125,13 @@
               },
               {
                 "type": "file",
+                "name": "Large-Lockable-Bin.png",
+                "path": "images/accessories/Large-Lockable-Bin.png",
+                "ext": ".png",
+                "size": 4514849
+              },
+              {
+                "type": "file",
                 "name": "longer-ramps-mesh.jpg",
                 "path": "images/accessories/longer-ramps-mesh.jpg",
                 "ext": ".jpg",
@@ -111,10 +139,31 @@
               },
               {
                 "type": "file",
+                "name": "Longer-ramps-with-mesh.png",
+                "path": "images/accessories/Longer-ramps-with-mesh.png",
+                "ext": ".png",
+                "size": 3825750
+              },
+              {
+                "type": "file",
                 "name": "small-lockable-bin.jpg",
                 "path": "images/accessories/small-lockable-bin.jpg",
                 "ext": ".jpg",
                 "size": 24046
+              },
+              {
+                "type": "file",
+                "name": "Small-Lockable-Bin.png",
+                "path": "images/accessories/Small-Lockable-Bin.png",
+                "ext": ".png",
+                "size": 4410750
+              },
+              {
+                "type": "file",
+                "name": "Spare-wheel-and-Mount.png",
+                "path": "images/accessories/Spare-wheel-and-Mount.png",
+                "ext": ".png",
+                "size": 4729596
               },
               {
                 "type": "file",
@@ -129,6 +178,13 @@
                 "path": "images/accessories/wheel-nut-indicators.jpg",
                 "ext": ".jpg",
                 "size": 23705
+              },
+              {
+                "type": "file",
+                "name": "Wheel-Nut-Indicators.png",
+                "path": "images/accessories/Wheel-Nut-Indicators.png",
+                "ext": ".png",
+                "size": 4720023
               }
             ]
           },
@@ -157,6 +213,89 @@
                 "path": "images/Banners/tasman-engineering-03.png",
                 "ext": ".png",
                 "size": 864287
+              }
+            ]
+          },
+          {
+            "type": "dir",
+            "name": "DIGGER",
+            "path": "images/DIGGER",
+            "children": [
+              {
+                "type": "dir",
+                "name": ".claude",
+                "path": "images/DIGGER/.claude",
+                "children": []
+              },
+              {
+                "type": "file",
+                "name": "1. DIGGER-TRAILER-w-DIGGER_hr.png",
+                "path": "images/DIGGER/1. DIGGER-TRAILER-w-DIGGER_hr.png",
+                "ext": ".png",
+                "size": 5139101
+              },
+              {
+                "type": "file",
+                "name": "2. Digger-Slam-shut-ramps2.png",
+                "path": "images/DIGGER/2. Digger-Slam-shut-ramps2.png",
+                "ext": ".png",
+                "size": 5844106
+              },
+              {
+                "type": "file",
+                "name": "CTDIG25.png",
+                "path": "images/DIGGER/CTDIG25.png",
+                "ext": ".png",
+                "size": 163268
+              },
+              {
+                "type": "file",
+                "name": "CTDIG25L.png",
+                "path": "images/DIGGER/CTDIG25L.png",
+                "ext": ".png",
+                "size": 312825
+              },
+              {
+                "type": "file",
+                "name": "CTDIG30-35.png",
+                "path": "images/DIGGER/CTDIG30-35.png",
+                "ext": ".png",
+                "size": 688628
+              },
+              {
+                "type": "file",
+                "name": "Digger_tdx_main.png",
+                "path": "images/DIGGER/Digger_tdx_main.png",
+                "ext": ".png",
+                "size": 4142351
+              },
+              {
+                "type": "file",
+                "name": "Digger-Trailer_2023.png",
+                "path": "images/DIGGER/Digger-Trailer_2023.png",
+                "ext": ".png",
+                "size": 4188629
+              },
+              {
+                "type": "file",
+                "name": "Digger3500_Main2.png",
+                "path": "images/DIGGER/Digger3500_Main2.png",
+                "ext": ".png",
+                "size": 6961237
+              },
+              {
+                "type": "file",
+                "name": "GT_Trailer_CC_hr.png",
+                "path": "images/DIGGER/GT_Trailer_CC_hr.png",
+                "ext": ".png",
+                "size": 535845
+              },
+              {
+                "type": "file",
+                "name": "Slam-shut-ramps2.png",
+                "path": "images/DIGGER/Slam-shut-ramps2.png",
+                "ext": ".png",
+                "size": 5844100
               }
             ]
           },
@@ -200,7 +339,7 @@
             "name": "fullwidthimage-largeboathero.png",
             "path": "images/fullwidthimage-largeboathero.png",
             "ext": ".png",
-            "size": 203936
+            "size": 203113
           },
           {
             "type": "file",
@@ -564,7 +703,7 @@
     }
   ],
   "summary": {
-    "imageFiles": 76,
-    "folders": 3
+    "imageFiles": 94,
+    "folders": 5
   }
 }

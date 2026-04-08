@@ -47,9 +47,9 @@ GT-Trailers/
 3. All images are included in the `images/` folder
 4. Uses Font Awesome CDN for icons (internet connection required)
 
-## Customization
+## Customisation
 
-### Colors
+### Colours
 Edit the CSS variables in `css/style.css`:
 ```css
 :root {
@@ -79,7 +79,7 @@ Edit the CSS variables in `css/style.css`:
 
 ## Notes
 
-- Website customized for GT Trailers - a trailer manufacturer in New Zealand
+- Website customised for GT Trailers - a trailer manufacturer in New Zealand
 - Content focuses on boat trailers, utility trailers, and trailer hardware
 - Theme design inspired by Indofact industrial template
 - Fully responsive and mobile-friendly
