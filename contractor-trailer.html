@@ -6,6 +6,93 @@
     <title>Contractor Trailer - GT Trailers</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Contractor model cards ── */
+        .contractor-model {
+            margin: 48px 0;
+            padding-bottom: 48px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .contractor-model:last-of-type {
+            border-bottom: none;
+        }
+        .contractor-model__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;   /* image column matches info column height */
+        }
+        @media (max-width: 768px) {
+            .contractor-model__inner { grid-template-columns: 1fr; }
+        }
+        .contractor-model__img {
+            width: 100%;
+            height: 100%;           /* fill the stretched grid cell */
+            min-height: 260px;      /* floor so it never collapses */
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+            /* lift white-background product photos off the grey page */
+            box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+            border: 1px solid #d8d8d8;
+            background-color: #fff;
+        }
+        .contractor-model__info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .contractor-model__title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color, #1a2e44);
+            margin: 0;
+        }
+        .contractor-model__price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary-color, #e63929);
+        }
+        .contractor-model__desc {
+            font-size: 0.97rem;
+            line-height: 1.65;
+            color: #444;
+            margin: 0;
+        }
+
+        /* ── Blue vertical spec table ── */
+        .spec-table-v {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.93rem;
+            margin-top: 8px;
+        }
+        .spec-table-v tr {
+            border-bottom: 1px solid #d0dae5;
+        }
+        .spec-table-v tr:last-child { border-bottom: none; }
+        .spec-table-v td {
+            padding: 10px 14px;
+            vertical-align: middle;
+        }
+        .spec-table-v td:first-child {
+            background-color: #1a3a5c;
+            color: #fff;
+            font-weight: 600;
+            width: 48%;
+        }
+        .spec-table-v td:last-child {
+            background-color: #f4f7fa;
+            color: #222;
+        }
+
+        /* yellow highlight on hash nav */
+        .contractor-model.highlighted {
+            outline: 3px solid #f0c000;
+            outline-offset: 6px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -17,16 +104,55 @@
                         <a href="index.html"><img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers"></a>
                     </div>
                     <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html#home">HOME</a></li>
-                    <li><a href="index.html#services" class="active">TRAILERS</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="digger-trailer.html">DIGGER TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="digger-trailer.html">All Digger Trailers</a></li>
+                            <li><a href="digger-trailer.html#ctdig25">CTDIG25 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig25l">CTDIG25L &mdash; 3.60m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig30">CTDIG30 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig30l">CTDIG30L &mdash; 3.60m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35">CTDIG35 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35m">CTDIG35M &mdash; 2.95m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35l">CTDIG35L &mdash; 3.60m &times; 1.80m</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="contractor-trailer.html" class="active">CONTRACTOR TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu contractor-dropdown">
+                            <li><a href="contractor-trailer.html">All Contractor Trailers</a></li>
+                            <li><a href="contractor-trailer.html#ct8x4">CT8x4 &mdash; 2.44m &times; 1.22m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct8x5">CT8x5 &mdash; 2.44m &times; 1.52m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct8x5ta">CT8x5TA &mdash; 2.44m &times; 1.52m <span class="ct-cap">1,600kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct10x5">CT10x5 &mdash; 3.05m &times; 1.52m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct10x5ta">CT10x5TA &mdash; 3.05m &times; 1.52m <span class="ct-cap">1,600kg</span></a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="boat-trailers.html">BOAT TRAILERS <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="boat-trailers.html">All Boat Trailers</a></li>
+                            <li><a href="boat-trailers.html#small-boats">BT450 &mdash; 4.50m &ndash; 4.90m</a></li>
+                            <li><a href="boat-trailers.html#medium-boats">BT500 &mdash; 4.90m &ndash; 5.40m</a></li>
+                            <li><a href="boat-trailers.html#medium-boats">BT550 &mdash; 5.40m &ndash; 5.90m</a></li>
+                            <li><a href="boat-trailers.html#large-boats">BT600 &mdash; 5.90m &ndash; 6.40m</a></li>
+                            <li><a href="boat-trailers.html#large-boats">BT650 &mdash; 6.40m &ndash; 6.90m</a></li>
                             <li><a href="jetskis.html">Jetski Trailers</a></li>
                         </ul>
                     </li>
-                    <li><a href="hardware.html">HARDWARE</a></li>
+                    <li class="dropdown">
+                        <a href="hardware.html">HARDWARE <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hardware.html#hw-trailer-couplings">Trailer Couplings</a></li>
+                            <li><a href="hardware.html#hw-jockey-wheels">Jockey Wheels</a></li>
+                            <li><a href="hardware.html#hw-winches">Winches</a></li>
+                            <li><a href="hardware.html#hw-boat-rollers">Boat Rollers</a></li>
+                            <li><a href="hardware.html#hw-lockable-bins">Lockable Bins</a></li>
+                            <li><a href="hardware.html#hw-spare-wheel">Spare Wheel &amp; Mount</a></li>
+                            <li><a href="hardware.html#hw-trailer-components">Trailer Components</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">CONTACT US</a></li>
                     <li class="nav-phone">
                         <a href="tel:096367437" class="nav-phone-link" aria-label="Phone GT Trailers"><i class="fas fa-phone" aria-hidden="true"></i> 09 636 7437</a>
@@ -56,17 +182,18 @@
     <!-- Service Detail Section -->
     <section class="service-detail">
         <div class="container">
-            <!-- First Row: Image + Heading + Description -->
+            <!-- Intro Row -->
             <div class="service-header-row">
                 <div class="service-detail-image">
-                    <img src="images/fullwidthimage-contractorhero.png" alt="Contractor Trailer">
+                    <img src="images/gt-trailers-13.png" alt="Contractor Trailer on job site">
                 </div>
                 <div class="service-header-text">
                     <h2>GT Contractor Trailers</h2>
                     <p>GT Contractor Trailers are designed and built to withstand day after day of hard, rugged treatment in the commercial environment. They utilise the same specifications as our heavier duty Digger and Transport Trailers.</p>
                 </div>
             </div>
-            
+
+            <!-- Features -->
             <div class="features-grid contractor-features-grid">
                 <div class="feature-section">
                     <h3>Standard Features</h3>
@@ -78,7 +205,6 @@
                         <li>Hinged tailgates &amp; tie hooks around chassis</li>
                     </ul>
                 </div>
-                
                 <div class="feature-section">
                     <h3>Optional Extras</h3>
                     <ul class="service-list">
@@ -89,69 +215,125 @@
                 </div>
             </div>
 
-            <div class="feature-section full-width">
-                <h3>Model Specifications</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-                        <thead>
-                            <tr style="background-color: var(--secondary-color); color: white;">
-                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">MODEL</th>
-                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">DECK AREA</th>
-                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">LOAD CAPACITY</th>
-                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">AXLE</th>
-                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">GVM</th>
-                                <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">TYRE SIZE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT8x4</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">2.44m &times; 1.22m</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1200kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Single</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1500kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">185/R14</td>
-                            </tr>
-                            <tr style="background-color: #f9f9f9;">
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT8x5</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">2.44m &times; 1.52m</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1200kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Single</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1500kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">185/R14</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT8x5TA</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">2.44m &times; 1.52m</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1600kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Tandem*</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">2000kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">165/R13</td>
-                            </tr>
-                            <tr style="background-color: #f9f9f9;">
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT10x5</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">3.05m &times; 1.52m</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1200kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Single</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1500kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">185/R14</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;"><strong>CT10x5TA</strong></td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">3.05m &times; 1.52m</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">1600kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Tandem*</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">2000kg</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">165/R13</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- ════════════════════════════════
+                 Individual model sections
+                 ════════════════════════════════ -->
+
+            <!-- CT8x4 -->
+            <div class="contractor-model" id="ct8x4">
+                <div class="contractor-model__inner">
+                    <img class="contractor-model__img"
+                         src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CONTRACTOR_CT8X4_23-2.webp"
+                         alt="CT8x4 Contractor Trailer">
+                    <div class="contractor-model__info">
+                        <h3 class="contractor-model__title">CT8x4</h3>
+                        <p class="contractor-model__price">$4,500 + GST</p>
+                        <p class="contractor-model__desc">The CT8x4 is our entry-level contractor trailer — compact yet tough. Its 2.44m &times; 1.22m marine ply deck handles everything from garden waste to tools and supplies, while the fully hot-dip galvanised frame keeps it rust-free for years. Perfect for tradies and small contractors needing a reliable daily workhorse.</p>
+                        <table class="spec-table-v">
+                            <tr><td>Product Code</td><td>CT8x4</td></tr>
+                            <tr><td>Deck Area</td><td>2.44m &times; 1.22m</td></tr>
+                            <tr><td>Load Capacity</td><td>1,200 kg</td></tr>
+                            <tr><td>Axle</td><td>Single</td></tr>
+                            <tr><td>GVM*</td><td>1,500 kg</td></tr>
+                            <tr><td>Tyre Size</td><td>185/R14</td></tr>
+                        </table>
+                    </div>
                 </div>
-                <p style="margin-top: 16px; font-size: 14px; color: var(--text-light); line-height: 1.55;">
-                    <strong>GVM</strong> = Gross Vehicle Mass (total max. weight of trailer &amp; load). <strong>TA</strong> = Tandem Axle.<br>
-                    *Hydraulic brakes units fitted at extra cost.
-                </p>
             </div>
+
+            <!-- CT8x5 -->
+            <div class="contractor-model" id="ct8x5">
+                <div class="contractor-model__inner">
+                    <img class="contractor-model__img"
+                         src="https://rexproducts.co.nz/wp-content/uploads/2022/01/Contractors-trailer.webp"
+                         alt="CT8x5 Contractor Trailer">
+                    <div class="contractor-model__info">
+                        <h3 class="contractor-model__title">CT8x5</h3>
+                        <p class="contractor-model__price">$4,675 + GST</p>
+                        <p class="contractor-model__desc">The CT8x5 gives you extra width over the CT8x4 — the same 2.44m length but a 1.52m deck width — making it ideal when you need to carry wider loads or more gear side by side. Built with the same welded steel and tread plate construction and fully galvanised for long-lasting performance on site.</p>
+                        <table class="spec-table-v">
+                            <tr><td>Product Code</td><td>CT8x5</td></tr>
+                            <tr><td>Deck Area</td><td>2.44m &times; 1.52m</td></tr>
+                            <tr><td>Load Capacity</td><td>1,200 kg</td></tr>
+                            <tr><td>Axle</td><td>Single</td></tr>
+                            <tr><td>GVM*</td><td>1,500 kg</td></tr>
+                            <tr><td>Tyre Size</td><td>185/R14</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CT8x5TA -->
+            <div class="contractor-model" id="ct8x5ta">
+                <div class="contractor-model__inner">
+                    <img class="contractor-model__img"
+                         src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CT8X5TA-1.webp"
+                         alt="CT8x5TA Tandem Axle Contractor Trailer">
+                    <div class="contractor-model__info">
+                        <h3 class="contractor-model__title">CT8x5TA</h3>
+                        <p class="contractor-model__price">$5,950 + GST</p>
+                        <p class="contractor-model__desc">The CT8x5TA is the tandem-axle version of our popular CT8x5, adding a 400kg boost in load capacity and extra stability at speed. With a GVM of 2,000kg it handles heavier commercial payloads with confidence. Hydraulic brake units are available as an optional extra for added control.</p>
+                        <table class="spec-table-v">
+                            <tr><td>Product Code</td><td>CT8x5TA</td></tr>
+                            <tr><td>Deck Area</td><td>2.44m &times; 1.52m</td></tr>
+                            <tr><td>Load Capacity</td><td>1,600 kg</td></tr>
+                            <tr><td>Axle</td><td>Tandem*</td></tr>
+                            <tr><td>GVM*</td><td>2,000 kg</td></tr>
+                            <tr><td>Tyre Size</td><td>165/R13</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CT10x5 -->
+            <div class="contractor-model" id="ct10x5">
+                <div class="contractor-model__inner">
+                    <img class="contractor-model__img"
+                         src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CT10X5-1.webp"
+                         alt="CT10x5 Contractor Trailer">
+                    <div class="contractor-model__info">
+                        <h3 class="contractor-model__title">CT10x5</h3>
+                        <p class="contractor-model__price">$4,900 + GST</p>
+                        <p class="contractor-model__desc">Need more length? The CT10x5 stretches to 3.05m while keeping the practical 1.52m width, giving you significantly more deck space for longer materials like timber, pipe, and scaffolding. The single-axle setup keeps towing straightforward while the galvanised chassis ensures long-term durability on the job.</p>
+                        <table class="spec-table-v">
+                            <tr><td>Product Code</td><td>CT10x5</td></tr>
+                            <tr><td>Deck Area</td><td>3.05m &times; 1.52m</td></tr>
+                            <tr><td>Load Capacity</td><td>1,200 kg</td></tr>
+                            <tr><td>Axle</td><td>Single</td></tr>
+                            <tr><td>GVM*</td><td>1,500 kg</td></tr>
+                            <tr><td>Tyre Size</td><td>185/R14</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CT10x5TA -->
+            <div class="contractor-model" id="ct10x5ta">
+                <div class="contractor-model__inner">
+                    <img class="contractor-model__img"
+                         src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CT10X5TA-1.webp"
+                         alt="CT10x5TA Tandem Axle Contractor Trailer">
+                    <div class="contractor-model__info">
+                        <h3 class="contractor-model__title">CT10x5TA</h3>
+                        <p class="contractor-model__price">$6,050 + GST</p>
+                        <p class="contractor-model__desc">The CT10x5TA is our largest and most capable contractor trailer — combining a full 3.05m &times; 1.52m deck with tandem-axle stability and a 1,600kg load rating. At 2,000kg GVM it's built for serious commercial work. Hydraulic brakes are optionally available, making it safe and capable even on steep terrain.</p>
+                        <table class="spec-table-v">
+                            <tr><td>Product Code</td><td>CT10x5TA</td></tr>
+                            <tr><td>Deck Area</td><td>3.05m &times; 1.52m</td></tr>
+                            <tr><td>Load Capacity</td><td>1,600 kg</td></tr>
+                            <tr><td>Axle</td><td>Tandem*</td></tr>
+                            <tr><td>GVM*</td><td>2,000 kg</td></tr>
+                            <tr><td>Tyre Size</td><td>165/R13</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 24px; font-size: 14px; color: var(--text-light); line-height: 1.6;">
+                <strong>GVM</strong> = Gross Vehicle Mass (total max. weight of trailer &amp; load). &nbsp;<strong>TA</strong> = Tandem Axle.<br>
+                *Hydraulic brake units fitted at extra cost. &nbsp;All prices exclude GST and are subject to change without notice.
+            </p>
+
         </div>
     </section>
 
@@ -171,7 +353,6 @@
                     <ul>
                         <li><a href="boat-trailers.html">Boat Trailers</a></li>
                         <li><a href="jetskis.html">Jetski Trailers</a></li>
-                        <li><a href="handyman-trailer.html">Handyman Trailer</a></li>
                         <li><a href="contractor-trailer.html">Contractor Trailer</a></li>
                         <li><a href="digger-trailer.html">Digger Trailer</a></li>
                         <li><a href="specialised-trailers.html">Specialised Trailers</a></li>
@@ -208,6 +389,24 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+    (function () {
+        function highlightModel() {
+            var hash = window.location.hash.replace('#', '');
+            if (!hash) return;
+            var card = document.getElementById(hash);
+            if (!card || !card.classList.contains('contractor-model')) return;
+            document.querySelectorAll('.contractor-model.highlighted').forEach(function (el) {
+                el.classList.remove('highlighted');
+            });
+            setTimeout(function () {
+                card.classList.add('highlighted');
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+        }
+        document.addEventListener('DOMContentLoaded', highlightModel);
+        window.addEventListener('hashchange', highlightModel);
+    })();
+    </script>
 </body>
 </html>
-

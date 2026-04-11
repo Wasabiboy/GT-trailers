@@ -17,16 +17,55 @@
                         <a href="index.html"><img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers"></a>
                     </div>
                     <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html#home">HOME</a></li>
-                    <li><a href="index.html#services">TRAILERS</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="digger-trailer.html">DIGGER TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="digger-trailer.html">All Digger Trailers</a></li>
+                            <li><a href="digger-trailer.html#ctdig25">CTDIG25 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig25l">CTDIG25L &mdash; 3.60m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig30">CTDIG30 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig30l">CTDIG30L &mdash; 3.60m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35">CTDIG35 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35m">CTDIG35M &mdash; 2.95m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35l">CTDIG35L &mdash; 3.60m &times; 1.80m</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="contractor-trailer.html">CONTRACTOR TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu contractor-dropdown">
+                            <li><a href="contractor-trailer.html">All Contractor Trailers</a></li>
+                            <li><a href="contractor-trailer.html#ct8x4">CT8x4 &mdash; 2.44m &times; 1.22m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct8x5">CT8x5 &mdash; 2.44m &times; 1.52m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct8x5ta">CT8x5TA &mdash; 2.44m &times; 1.52m <span class="ct-cap">1,600kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct10x5">CT10x5 &mdash; 3.05m &times; 1.52m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct10x5ta">CT10x5TA &mdash; 3.05m &times; 1.52m <span class="ct-cap">1,600kg</span></a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="boat-trailers.html">BOAT TRAILERS <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="boat-trailers.html">All Boat Trailers</a></li>
+                            <li><a href="boat-trailers.html#small-boats">BT450 &mdash; 4.50m &ndash; 4.90m</a></li>
+                            <li><a href="boat-trailers.html#medium-boats">BT500 &mdash; 4.90m &ndash; 5.40m</a></li>
+                            <li><a href="boat-trailers.html#medium-boats">BT550 &mdash; 5.40m &ndash; 5.90m</a></li>
+                            <li><a href="boat-trailers.html#large-boats">BT600 &mdash; 5.90m &ndash; 6.40m</a></li>
+                            <li><a href="boat-trailers.html#large-boats">BT650 &mdash; 6.40m &ndash; 6.90m</a></li>
                             <li><a href="jetskis.html">Jetski Trailers</a></li>
                         </ul>
                     </li>
-                    <li><a href="hardware.html" class="active">HARDWARE</a></li>
+                    <li class="dropdown">
+                        <a href="hardware.html" class="active">HARDWARE <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hardware.html#hw-trailer-couplings">Trailer Couplings</a></li>
+                            <li><a href="hardware.html#hw-jockey-wheels">Jockey Wheels</a></li>
+                            <li><a href="hardware.html#hw-winches">Winches</a></li>
+                            <li><a href="hardware.html#hw-boat-rollers">Boat Rollers</a></li>
+                            <li><a href="hardware.html#hw-lockable-bins">Lockable Bins</a></li>
+                            <li><a href="hardware.html#hw-spare-wheel">Spare Wheel &amp; Mount</a></li>
+                            <li><a href="hardware.html#hw-trailer-components">Trailer Components</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">CONTACT US</a></li>
                     <li class="nav-phone">
                         <a href="tel:096367437" class="nav-phone-link" aria-label="Phone GT Trailers"><i class="fas fa-phone" aria-hidden="true"></i> 09 636 7437</a>
@@ -62,33 +101,42 @@
                     <p>We're able to supply a range of trailer hardware and accessories for trouble-free towing:</p>
                     
                     <div class="hw-grid">
-                        <div class="hw-card">
+                        <!-- Boxes 1–3: correct as confirmed by client -->
+                        <div class="hw-card" id="hw-trailer-couplings">
                             <img src="images/trailer-coupling.png" alt="Trailer Couplings">
                             <span class="hw-card__label">Trailer Couplings</span>
                         </div>
-                        <div class="hw-card">
+                        <div class="hw-card" id="hw-jockey-wheels">
                             <img src="images/jockie-wheel.png" alt="Jockey Wheels">
                             <span class="hw-card__label">Jockey Wheels</span>
                         </div>
-                        <div class="hw-card">
+                        <div class="hw-card" id="hw-winches">
                             <img src="images/winches.png" alt="Winches">
                             <span class="hw-card__label">Winches</span>
                         </div>
-                        <div class="hw-card">
-                            <img src="images/SetWidth213-hardwarefb2.png" alt="Boat Rollers">
+                        <div class="hw-card" id="hw-boat-rollers">
+                            <img src="images/Boats/BOAT%20TRAILERS/boat-rollers.png" alt="Boat Rollers">
                             <span class="hw-card__label">Boat Rollers</span>
                         </div>
-                        <div class="hw-card">
-                            <img src="images/wobble rollers-largeboattrailer.png" alt="Wobble Rollers">
-                            <span class="hw-card__label">Wobble Rollers</span>
+                        <!-- Box 5: Lockable Bins -->
+                        <div class="hw-card" id="hw-lockable-bins">
+                            <img src="images/accessories/Large-Lockable-Bin.png" alt="Lockable Bins">
+                            <span class="hw-card__label">Lockable Bins</span>
                         </div>
-                        <div class="hw-card">
-                            <img src="images/accessories/Wheel-Nut-Indicators.png" alt="Sentry Wheel Clamps">
-                            <span class="hw-card__label">Wheel Clamps</span>
+                        <!-- Box 6: Longer Ramps with Mesh -->
+                        <div class="hw-card" id="hw-longer-ramps">
+                            <img src="images/accessories/Longer-ramps-with-mesh.png" alt="Longer Ramps with Mesh">
+                            <span class="hw-card__label">Longer Ramps with Mesh</span>
                         </div>
-                        <div class="hw-card">
-                            <img src="images/SetWidth237-hardware04.png" alt="Spare Wheel Mount">
-                            <span class="hw-card__label">Spare Wheel Mount</span>
+                        <!-- Box 7: Spare Wheel & Mount -->
+                        <div class="hw-card" id="hw-spare-wheel">
+                            <img src="images/accessories/Spare-wheel-and-Mount.png" alt="Spare Wheel and Mount">
+                            <span class="hw-card__label">Spare Wheel &amp; Mount</span>
+                        </div>
+                        <!-- Box 8: Trailer Components (Group-Shot-STUB-AXLES-&-BEARINGS.png — add to images/ when available) -->
+                        <div class="hw-card" id="hw-trailer-components">
+                            <img src="images/Boats/BOAT%20TRAILERS/STUB-AXLES-%26-BEARINGS.png" alt="Trailer Components">
+                            <span class="hw-card__label">Trailer Components</span>
                         </div>
                     </div>
                     
@@ -100,6 +148,55 @@
             </div>
         </div>
     </section>
+
+    <!-- Hardware image modal -->
+    <div class="gallery-modal" id="hwModal" role="dialog" aria-modal="true" aria-label="Hardware image" hidden>
+        <div class="gallery-modal__backdrop" aria-hidden="true"></div>
+        <div class="gallery-modal__inner">
+            <button type="button" class="gallery-modal__close" id="hwModalClose" aria-label="Close image">&times;</button>
+            <img class="gallery-modal__img" id="hwModalImg" src="" alt="">
+        </div>
+    </div>
+
+    <style>
+        .hw-card { cursor: zoom-in; }
+    </style>
+
+    <script>
+    (function () {
+        var modal    = document.getElementById('hwModal');
+        var modalImg = document.getElementById('hwModalImg');
+        var closeBtn = document.getElementById('hwModalClose');
+        var backdrop = modal.querySelector('.gallery-modal__backdrop');
+
+        function openModal(src, alt) {
+            modalImg.src = src;
+            modalImg.alt = alt || '';
+            modal.removeAttribute('hidden');
+            document.body.style.overflow = 'hidden';
+            closeBtn.focus();
+        }
+
+        function closeModal() {
+            modal.setAttribute('hidden', '');
+            modalImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Click each hw-card image to open modal
+        document.querySelectorAll('.hw-card img').forEach(function (img) {
+            img.addEventListener('click', function () {
+                openModal(img.src, img.alt);
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+        });
+    })();
+    </script>
 
     <!-- Footer -->
     <footer class="footer">
@@ -117,7 +214,6 @@
                     <ul>
                         <li><a href="boat-trailers.html">Boat Trailers</a></li>
                         <li><a href="jetskis.html">Jetski Trailers</a></li>
-                        <li><a href="handyman-trailer.html">Handyman Trailer</a></li>
                         <li><a href="contractor-trailer.html">Contractor Trailer</a></li>
                         <li><a href="digger-trailer.html">Digger Trailer</a></li>
                         <li><a href="specialised-trailers.html">Specialised Trailers</a></li>
@@ -154,6 +250,32 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <style>
+        .hw-card.highlighted {
+            outline: 3px solid #f0c000;
+            box-shadow: 0 0 0 3px #f0c000;
+        }
+    </style>
+    <script>
+        (function () {
+            function highlightCard() {
+                var hash = window.location.hash.replace('#', '');
+                if (!hash) return;
+                var card = document.getElementById(hash);
+                if (!card || !card.classList.contains('hw-card')) return;
+                setTimeout(function () {
+                    document.querySelectorAll('.hw-card.highlighted').forEach(function (el) {
+                        el.classList.remove('highlighted');
+                    });
+                    card.classList.add('highlighted');
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 150);
+            }
+            document.addEventListener('DOMContentLoaded', highlightCard);
+            window.addEventListener('hashchange', highlightCard);
+        })();
+    </script>
 </body>
 </html>
 

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT Trailers - Website Change Requests (Status)</title>
+<style>
+  :root {
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --done:#16a34a; --todo:#dc2626; --partial:#d97706; --brand:#0b3d91;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;max-width:1060px;margin:0 auto;padding:40px 24px;line-height:1.55}
+  header.doc-header{border-bottom:3px solid var(--brand);padding-bottom:20px;margin-bottom:32px}
+  h1{margin:0 0 8px;color:var(--brand);font-size:28px}
+  .meta{color:var(--muted);font-size:14px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0 0;font-size:13px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .legend .d-done{background:var(--done)} .legend .d-partial{background:var(--partial)} .legend .d-todo{background:var(--todo)}
+  h2.section{margin:36px 0 16px;padding:10px 14px;background:var(--brand);color:#fff;font-size:17px;border-radius:6px}
+  .summary-stats{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap}
+  .stat{flex:1;min-width:150px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:14px;text-align:center}
+  .stat .num{font-size:28px;font-weight:700}
+  .stat.done .num{color:var(--done)} .stat.partial .num{color:var(--partial)} .stat.todo .num{color:var(--todo)}
+  .stat .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em}
+  .item{border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:10px;background:#fff;display:flex;gap:14px;align-items:flex-start}
+  .item .body{flex:1}
+  .item h4{margin:0 0 4px;font-size:15px}
+  .item p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+  .badge{flex-shrink:0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;padding:5px 10px;border-radius:999px;white-space:nowrap}
+  .badge.done{background:#dcfce7;color:var(--done);border:1px solid #bbf7d0}
+  .badge.partial{background:#fef3c7;color:var(--partial);border:1px solid #fde68a}
+  .badge.todo{background:#fee2e2;color:var(--todo);border:1px solid #fecaca}
+  .note{background:#fef9c3;border-left:3px solid #eab308;padding:6px 10px;margin-top:8px;font-size:12.5px;color:#713f12;border-radius:3px}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="doc-header">
+  <h1>GT Trailers — Website Change Requests</h1>
+  <p class="meta">Source: emails from Claire Worthington (Rex Products) &middot; Compiled &amp; updated 11 April 2026 &middot; Applied to <code>C:\CursorApps\RexProducts\GT-Trailers</code></p>
+  <div class="legend">
+    <span><span class="dot d-done"></span> Done — applied to live files</span>
+    <span><span class="dot d-partial"></span> Partial — applied with fallback / needs asset</span>
+    <span><span class="dot d-todo"></span> To Do — not yet applied</span>
+  </div>
+</header>
+
+<div class="summary-stats">
+  <div class="stat done"><div class="num">32</div><div class="label">Done</div></div>
+  <div class="stat partial"><div class="num">5</div><div class="label">Partial</div></div>
+  <div class="stat todo"><div class="num">6</div><div class="label">To Do</div></div>
+</div>
+
+<h2 class="section">1. Global / Site-Wide</h2>
+
+<div class="item"><div class="body"><h4>Remove "Handyman Trailer" from site navigation and product lists</h4><p>Handyman is no longer a product line. Remove nav dropdown entry, home category card, and any reference in menu/footer.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Rebuild main navigation with dropdowns</h4><p>HOME | DIGGER TRAILERS ▾ | CONTRACTOR TRAILERS ▾ | BOAT TRAILERS ▾ | HARDWARE ▾ | CONTACT US | Phone. Rolled out across 12 HTML pages.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Use NZ spelling throughout (Specialised, galvanised, etc.)</h4><p>No American spellings anywhere in copy.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Footer copyright year to auto-render current year</h4><p><code>&lt;span id="currentYear"&gt;&lt;/span&gt;</code> populated via main.js. Will render 2026.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Footer "Our Trailers" link still targets removed index#services section</h4><p>Should point to a live landing section or be removed.</p></div><span class="badge todo">To Do</span></div>
+
+<h2 class="section">2. Home Page (index.html)</h2>
+
+<div class="item"><div class="body"><h4>Remove "Our Trailers" services section from home page</h4><p>Section at old lines 197-254 removed and replaced with HTML comment.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Reorder hero sliders</h4><p>Slide 1 Commercial/Digger hero → Slide 2 Premium Boat Trailers → Slide 3 Digger Trailers.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Slider image updates</h4><p>Slide 1: <code>DIGGER/Digger_tdx_main.png</code>. Slide 2: <code>Boats/BOAT TRAILERS/Boat_trailer2023.png</code>. Slide 3: <code>DIGGER/Digger3500_Main2.png</code>.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Shop by Category panel reorder + image updates</h4><p>Digger → Contractor → Boat → Hardware. Handyman card removed. Digger uses <code>DIGGER/CTDIG25L.png</code>, Boat uses <code>Boat_trailer2023.png</code>.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Why Choose GT Trailers — three panel images</h4><p>Expert Craftsmanship: <code>Digger_tdx_main.png</code>. Quality Materials: <code>fullwidthimage-contractorhero.png</code>. Reliable Trailers: <code>Boat_trailer2023.png</code>.<div class="note">Partial: Quality Materials panel uses a fallback image. Claire requested <code>Specialised-Compactor_hr.png</code> which is not in the downloaded Dropbox assets.</div></p></div><span class="badge partial">Partial</span></div>
+
+<div class="item"><div class="body"><h4>About Us — remove "1000 Trailers Built" &amp; "500 Happy Customers" stats</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>About Us — change "20 Years Experience" → "30 Years in Business"</h4><p>Counter data-target updated to 30.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>About Us — image update</h4><p>Now <code>DIGGER/1. DIGGER-TRAILER-w-DIGGER_hr.png</code>.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>About Us — right-align "Get a Quote" button</h4><p>Wrapped in flex container with <code>justify-content: flex-end</code>.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Home stats — simplify to "30 Years in Business" + "50 Trailer Models"</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Accessories panel description update</h4><p>Now reads: "GT Trailers are available with a range of options &amp; accessories direct from the factory".</p></div><span class="badge done">Done</span></div>
+
+<h2 class="section">3. Contractor Trailers Page (contractor-trailer.html)</h2>
+
+<div class="item"><div class="body"><h4>Navigation rebuilt with new structure + active state</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Reduce model list from 8 to 5 (CT8x4, CT8x5, CT8x5TA, CT10x5, CT10x5TA)</h4><p>Spec table rewritten with 5 rows: deck area, load capacity, axle, GVM, tyre size.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Add anchor IDs to each model row for dropdown deep-linking</h4><p>Row IDs: <code>#ct8x4</code>, <code>#ct8x5</code>, <code>#ct8x5ta</code>, <code>#ct10x5</code>, <code>#ct10x5ta</code>. Nav dropdown updated to match.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Standard Features + Optional Extras copy refresh</h4><p>Welded steel/tread plate, hot-dip galvanised, single/tandem axle, marine ply deck, tie hooks. Extras: mesh cage, spare wheel mount, H-racks.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Hero image</h4><p>Uses <code>fullwidthimage-contractorhero.png</code>.</p></div><span class="badge done">Done</span></div>
+
+<h2 class="section">4. Digger Trailers Page (digger-trailer.html)</h2>
+
+<div class="item"><div class="body"><h4>Navigation rebuilt with new structure</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Replace hero &amp; per-model images with supplied Dropbox assets</h4><p>CTDIG25, CTDIG25L, CTDIG30-35 images.</p><div class="note">Body content (per-model copy/specs refresh) not yet verified against Claire's Feb 25 email.</div></div><span class="badge partial">Partial</span></div>
+
+<h2 class="section">5. Boat Trailers &amp; Jetski</h2>
+
+<div class="item"><div class="body"><h4>Consolidate small/medium/large boat trailer pages into single boat-trailers.html</h4><p>Retire separate <code>small-boats.html</code>, <code>medium-boats.html</code>, <code>large-boats.html</code>.</p></div><span class="badge todo">To Do</span></div>
+
+<div class="item"><div class="body"><h4>Replace boat trailer spec images with editable HTML tables</h4></div><span class="badge todo">To Do</span></div>
+
+<div class="item"><div class="body"><h4>Boat trailers — navigation rebuilt</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Jetski page — technical specs refresh (8 Apr email)</h4><p>NZ fabricated, welded steel/tread plate, LED 9-33v, hot-dip galvanised, leaf spring suspension (tandem optional), hydraulic override disc brakes optional, jockey wheel.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Jetski page — JSSTD / JSDEL model cards + spec table</h4><p>Both models: 1000kg spring, 3:1 winch ratio, 18.5 × 8.5 tyres.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Jetski page — navigation rebuilt</h4></div><span class="badge done">Done</span></div>
+
+<h2 class="section">6. Trailer Hardware Page (hardware.html)</h2>
+
+<div class="item"><div class="body"><h4>Navigation rebuilt with HARDWARE dropdown active</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Expand hardware grid from 7 to 8 boxes</h4><p>Boxes 1-3 unchanged (Couplings, Jockey Wheels, Winches). Box 4 Boat Rollers. Box 5 Lockable Bins. Box 6 Longer Ramps with Mesh. Box 7 Spare Wheel &amp; Mount. Box 8 Trailer Components.</p></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Box 4 image — <code>Group-Shot-Boat-rollers.png</code></h4><div class="note">Partial: asset not in Dropbox download. Using existing <code>SetWidth213-hardwarefb2.png</code> as placeholder. Add final image to <code>images/</code> when supplied.</div></div><span class="badge partial">Partial</span></div>
+
+<div class="item"><div class="body"><h4>Box 5 Lockable Bins → <code>accessories/Large-Lockable-Bin.png</code></h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Box 6 Longer Ramps with Mesh → <code>accessories/Longer-ramps-with-mesh.png</code></h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Box 7 Spare Wheel &amp; Mount → <code>accessories/Spare-wheel-and-Mount.png</code></h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Box 8 Trailer Components — <code>Group-Shot-STUB-AXLES-&amp;-BEARINGS.png</code></h4><div class="note">Partial: asset not in Dropbox download. Using existing <code>SetWidth237-hardware04.png</code> as placeholder.</div></div><span class="badge partial">Partial</span></div>
+
+<h2 class="section">7. Contact Page (contact.html)</h2>
+
+<div class="item"><div class="body"><h4>Navigation rebuilt with new structure</h4></div><span class="badge done">Done</span></div>
+
+<div class="item"><div class="body"><h4>Remove Account Application tab</h4><p>Audit confirmed: no Account Application references present in <code>contact.html</code>.</p></div><span class="badge done">Done</span></div>
+
+<h2 class="section">8. Other Pages — Navigation Sync</h2>
+
+<div class="item"><div class="body"><h4>specialised-trailers.html</h4></div><span class="badge done">Done</span></div>
+<div class="item"><div class="body"><h4>handyman-trailer.html (legacy)</h4><p>Nav synced. Page itself should eventually be retired along with other handyman references.</p></div><span class="badge done">Done</span></div>
+<div class="item"><div class="body"><h4>friction-stir-welding.html, general-engineering.html, design-development.html</h4></div><span class="badge done">Done</span></div>
+
+<h2 class="section">9. SEO Recommendations</h2>
+
+<div class="item"><div class="body"><h4>Add meta descriptions &amp; improved page titles</h4><p>Per Claire's SEO email — not yet applied across pages.</p></div><span class="badge todo">To Do</span></div>
+
+<div class="item"><div class="body"><h4>Structured data / LocalBusiness schema</h4></div><span class="badge todo">To Do</span></div>
+
+<div class="item"><div class="body"><h4>Image alt tags audit</h4><p>Existing alts reasonable; full audit not yet run.</p></div><span class="badge todo">To Do</span></div>
+
+<h2 class="section">10. Assets Still Needed From Claire</h2>
+
+<div class="item"><div class="body"><h4><code>Specialised-Compactor_hr.png</code></h4><p>For Why Choose GT Trailers → Quality Materials panel on home page.</p></div><span class="badge todo">To Do</span></div>
+
+<div class="item"><div class="body"><h4><code>Group-Shot-Boat-rollers.png</code></h4><p>For Hardware page Box 4.</p></div><span class="badge todo">To Do</span></div>
+
+<div class="item"><div class="body"><h4><code>Group-Shot-STUB-AXLES-&amp;-BEARINGS.png</code></h4><p>For Hardware page Box 8 (Trailer Components).</p></div><span class="badge todo">To Do</span></div>
+
+<footer>
+  <p>Generated by Cowork — review items flagged Partial/To Do with Claire Worthington before final sign-off.</p>
+</footer>
+
+</body>
+</html>

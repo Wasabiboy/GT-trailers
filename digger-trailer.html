@@ -18,14 +18,60 @@
                         <a href="index.html"><img src="images/GT-TRAILERS-LOGO.png" alt="GT Trailers"></a>
                     </div>
                     <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html#home">HOME</a></li>
-                    <li><a href="index.html#services" class="active">TRAILERS</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="digger-trailer.html" class="active">DIGGER TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="digger-trailer.html">All Digger Trailers</a></li>
+                            <li><a href="digger-trailer.html#ctdig25">CTDIG25 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig25l">CTDIG25L &mdash; 3.60m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig30">CTDIG30 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig30l">CTDIG30L &mdash; 3.60m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35">CTDIG35 &mdash; 2.95m &times; 1.45m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35m">CTDIG35M &mdash; 2.95m &times; 1.80m</a></li>
+                            <li><a href="digger-trailer.html#ctdig35l">CTDIG35L &mdash; 3.60m &times; 1.80m</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="contractor-trailer.html">CONTRACTOR TRAILERS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu contractor-dropdown">
+                            <li><a href="contractor-trailer.html">All Contractor Trailers</a></li>
+                            <li><a href="contractor-trailer.html#ct8x4">CT8x4 &mdash; 2.44m &times; 1.22m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct8x5">CT8x5 &mdash; 2.44m &times; 1.52m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct8x5ta">CT8x5TA &mdash; 2.44m &times; 1.52m <span class="ct-cap">1,600kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct10x5">CT10x5 &mdash; 3.05m &times; 1.52m <span class="ct-cap">1,200kg</span></a></li>
+                            <li><a href="contractor-trailer.html#ct10x5ta">CT10x5TA &mdash; 3.05m &times; 1.52m <span class="ct-cap">1,600kg</span></a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="boat-trailers.html">BOAT TRAILERS <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="boat-trailers.html">All Boat Trailers</a></li>
+                            <li><a href="boat-trailers.html#small-boats">BT450 &mdash; 4.50m &ndash; 4.90m</a></li>
+                            <li><a href="boat-trailers.html#medium-boats">BT500 &mdash; 4.90m &ndash; 5.40m</a></li>
+                            <li><a href="boat-trailers.html#medium-boats">BT550 &mdash; 5.40m &ndash; 5.90m</a></li>
+                            <li><a href="boat-trailers.html#large-boats">BT600 &mdash; 5.90m &ndash; 6.40m</a></li>
+                            <li><a href="boat-trailers.html#large-boats">BT650 &mdash; 6.40m &ndash; 6.90m</a></li>
                             <li><a href="jetskis.html">Jetski Trailers</a></li>
                         </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="hardware.html">HARDWARE <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hardware.html#hw-trailer-couplings">Trailer Couplings</a></li>
+                            <li><a href="hardware.html#hw-jockey-wheels">Jockey Wheels</a></li>
+                            <li><a href="hardware.html#hw-winches">Winches</a></li>
+                            <li><a href="hardware.html#hw-boat-rollers">Boat Rollers</a></li>
+                            <li><a href="hardware.html#hw-lockable-bins">Lockable Bins</a></li>
+                            <li><a href="hardware.html#hw-spare-wheel">Spare Wheel &amp; Mount</a></li>
+                            <li><a href="hardware.html#hw-trailer-components">Trailer Components</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                    <li class="nav-phone">
+                        <a href="tel:096367437" class="nav-phone-link" aria-label="Phone GT Trailers"><i class="fas fa-phone" aria-hidden="true"></i> 09 636 7437</a>
+                    </li>
+                </ul>
                     </li>
                     <li><a href="hardware.html">HARDWARE</a></li>
                     <li><a href="contact.html">CONTACT US</a></li>
@@ -59,12 +105,101 @@
         <div class="container">
             <!-- First Row: Image + Heading + Description -->
             <div class="service-header-row">
-                <div class="service-detail-image">
-                    <img src="images/DIGGER/Slam-shut-ramps2.png" alt="Slam shut ramps on digger trailer">
+                <!-- Hero image slideshow -->
+                <div class="service-detail-image digger-hero-slider" id="diggerHeroSlider">
+                    <img src="images/DIGGER/1.%20DIGGER-TRAILER-w-DIGGER_hr.png"    alt="Digger trailer with CAT excavators" class="hero-slide active">
+                    <img src="images/DIGGER/Digger_tdx_main.png"                    alt="Yanmar digger on GT trailer"        class="hero-slide">
+                    <img src="GT%20TRAILERS/Digger%20Max%203500%20Trailer/IMG_8451.jpg" alt="GT digger trailer on quarry site"    class="hero-slide">
+                    <img src="GT%20TRAILERS/Digger%20Max%203500%20Trailer/IMG_8471.jpg" alt="GT digger trailer on construction site" class="hero-slide">
+                    <img src="GT%20TRAILERS/Digger%20Max%203500%20Trailer/IMG_8468.jpg" alt="GT digger trailer ramps down on site" class="hero-slide">
+                    <div class="hero-slide-dots" id="heroSlideDots"></div>
                 </div>
+                <style>
+                    .digger-hero-slider {
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: var(--radius-sm, 8px);
+                        background: #111;
+                    }
+                    .digger-hero-slider .hero-slide {
+                        position: absolute;
+                        inset: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                        opacity: 0;
+                        transition: opacity 1s ease-in-out;
+                        display: block;
+                    }
+                    .digger-hero-slider .hero-slide.active {
+                        opacity: 1;
+                        position: relative; /* first active takes up space */
+                    }
+                    .hero-slide-dots {
+                        position: absolute;
+                        bottom: 10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        display: flex;
+                        gap: 7px;
+                        z-index: 10;
+                    }
+                    .hero-slide-dots .dot {
+                        width: 9px;
+                        height: 9px;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.5);
+                        cursor: pointer;
+                        transition: background 0.3s;
+                    }
+                    .hero-slide-dots .dot.active {
+                        background: #fff;
+                    }
+                </style>
+                <script>
+                (function () {
+                    var slider  = document.getElementById('diggerHeroSlider');
+                    var slides  = slider.querySelectorAll('.hero-slide');
+                    var dotsEl  = document.getElementById('heroSlideDots');
+                    var current = 0;
+                    var timer;
+
+                    // Build dots
+                    slides.forEach(function (_, i) {
+                        var d = document.createElement('button');
+                        d.className = 'dot' + (i === 0 ? ' active' : '');
+                        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+                        d.addEventListener('click', function () { goTo(i); resetTimer(); });
+                        dotsEl.appendChild(d);
+                    });
+
+                    var dots = dotsEl.querySelectorAll('.dot');
+
+                    function goTo(n) {
+                        slides[current].classList.remove('active');
+                        dots[current].classList.remove('active');
+                        // restore absolute positioning on old slide
+                        slides[current].style.position = 'absolute';
+                        current = (n + slides.length) % slides.length;
+                        slides[current].style.position = 'relative';
+                        slides[current].classList.add('active');
+                        dots[current].classList.add('active');
+                    }
+
+                    function next() { goTo(current + 1); }
+
+                    function resetTimer() {
+                        clearInterval(timer);
+                        timer = setInterval(next, 4500);
+                    }
+
+                    resetTimer();
+                })();
+                </script>
                 <div class="service-header-text">
                     <h2>GT Digger Trailer</h2>
-                    <p>This Digger Trailer offers the best versatility and value-for-money of any on the market. With a standard payload of 2050kg, trailers can cater for a 1.8 tonne machine with extra tools and parts. All components are locally sourced to ensure maximum reliability and parts availability.</p>
+                    <p>Standard payload of 2050kg, catering for 1.8 tonne machines.<br>Fully hot-dip galvanised monocoque chassis with hydraulic override disc brakes.<br>Built tough for NZ conditions.</p>
                 </div>
             </div>
             
@@ -185,49 +320,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="ctdig25" class="spec-row">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG25</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2.95m x 1.45m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Hydraulic</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2500kg</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">1970kg</td>
                             </tr>
-                            <tr style="background-color: #f9f9f9;">
+                            <tr id="ctdig25l" class="spec-row" style="background-color: #f9f9f9;">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG25L</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3.60m x 1.80m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Hydraulic</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2500kg</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">1870kg</td>
                             </tr>
-                            <tr>
+                            <tr id="ctdig30" class="spec-row">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG30</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2.95m x 1.45m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Mechanical</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3000kg</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2390kg</td>
                             </tr>
-                            <tr style="background-color: #f9f9f9;">
+                            <tr id="ctdig30l" class="spec-row" style="background-color: #f9f9f9;">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG30L</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3.60m x 1.80m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Mechanical</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3000kg</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2290kg</td>
                             </tr>
-                            <tr>
+                            <tr id="ctdig35" class="spec-row">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG35</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2.95m x 1.45m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Mechanical</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3500kg</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2800kg</td>
                             </tr>
-                            <tr style="background-color: #f9f9f9;">
+                            <tr id="ctdig35m" class="spec-row" style="background-color: #f9f9f9;">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG35M</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2.95m x 1.80m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Mechanical</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3500kg</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">2800kg</td>
                             </tr>
-                            <tr>
+                            <tr id="ctdig35l" class="spec-row">
                                 <td style="padding: 10px; border: 1px solid #ddd;"><strong>CTDIG35L</strong></td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">3.60m x 1.80m</td>
                                 <td style="padding: 10px; border: 1px solid #ddd;">Mechanical</td>
@@ -241,9 +376,13 @@
                 <!-- Options Section -->
                 <div style="margin-top: 30px;">
                     <h3>Options</h3>
-                    <p style="margin-top: 15px; line-height: 1.6;">
-                        Spare wheel and mount • Duofit coupling (17/8 or 50mm capable) • Custom ramp options • Brake options to increase total GVM to 3500kg • Coupling guard
-                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px;">
+                        <span style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:10px 16px; font-weight:600; font-size:14px; color:#0f172a;">Spare wheel and mount</span>
+                        <span style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:10px 16px; font-weight:600; font-size:14px; color:#0f172a;">Duofit coupling <span style="font-weight:400; color:#64748b;">(1⅞&Prime; or 50mm capable)</span></span>
+                        <span style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:10px 16px; font-weight:600; font-size:14px; color:#0f172a;">Custom ramp options</span>
+                        <span style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:10px 16px; font-weight:600; font-size:14px; color:#0f172a;">Brake options <span style="font-weight:400; color:#64748b;">(increase GVM to 3500kg)</span></span>
+                        <span style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:10px 16px; font-weight:600; font-size:14px; color:#0f172a;">Coupling guard</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -265,7 +404,6 @@
                     <ul>
                         <li><a href="boat-trailers.html">Boat Trailers</a></li>
                         <li><a href="jetskis.html">Jetski Trailers</a></li>
-                        <li><a href="handyman-trailer.html">Handyman Trailer</a></li>
                         <li><a href="contractor-trailer.html">Contractor Trailer</a></li>
                         <li><a href="digger-trailer.html">Digger Trailer</a></li>
                         <li><a href="specialised-trailers.html">Specialised Trailers</a></li>
@@ -302,6 +440,35 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <style>
+        .spec-row.highlighted {
+            background-color: #fffbcc !important;
+            outline: 2px solid #f0c000;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <script>
+        (function () {
+            function highlightRow() {
+                var hash = window.location.hash.replace('#', '').toLowerCase();
+                if (!hash) return;
+                var row = document.getElementById(hash);
+                if (!row || !row.classList.contains('spec-row')) return;
+                // Small delay so browser finishes its own scroll
+                setTimeout(function () {
+                    // Remove any previous highlight
+                    document.querySelectorAll('.spec-row.highlighted').forEach(function (r) {
+                        r.classList.remove('highlighted');
+                    });
+                    row.classList.add('highlighted');
+                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 150);
+            }
+            document.addEventListener('DOMContentLoaded', highlightRow);
+            window.addEventListener('hashchange', highlightRow);
+        })();
+    </script>
 </body>
 </html>
 
