@@ -666,9 +666,9 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+    background: var(--primary-color);
     color: var(--white);
-    padding: 40px 20px 20px;
+    padding: 11px 20px;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
@@ -853,21 +853,23 @@ p {
 .accessory-cell img {
     width: 100%;
     height: 180px;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     display: block;
+    flex-shrink: 0;
     background: var(--white);
-    padding: 6px;
     box-sizing: border-box;
 }
 
 .accessory-cell-label {
-    padding: 10px 6px;
-    font-size: 14px;
+    padding: 11px 12px;
+    font-size: 16px;
     font-weight: 600;
-    color: var(--text-color);
-    background: #fafafa;
-    border-top: 1px solid #eee;
+    color: var(--white);
+    background: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
     line-height: 1.35;
 }
 
@@ -1210,8 +1212,10 @@ p {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 320px));
     gap: 30px;
+    justify-content: center;
+    width: 100%;
 }
 
 .stat-box {
@@ -2470,8 +2474,9 @@ table.spec-table tbody tr:last-child td {
     }
 
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 300px));
         gap: 24px;
+        justify-content: center;
     }
 
     .footer-content {
@@ -2616,6 +2621,9 @@ table.spec-table tbody tr:last-child td {
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        max-width: 560px;
+        margin-inline: auto;
     }
 
     .contact-content {
