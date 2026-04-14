@@ -3,3 +3,6 @@
 
 # Large design source library (not required for the website repo)
 GT TRAILERS/
+
+# Image source archives (not used by pages; keeps clone/deploy smaller)
+images/**/*.zip
