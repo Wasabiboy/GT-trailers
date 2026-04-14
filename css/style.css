@@ -119,7 +119,7 @@ p {
     align-items: center;
     padding: 0;
     height: 80px;
-    gap: 16px;
+    gap: 12px;
 }
 
 .navbar-start {
@@ -127,7 +127,7 @@ p {
     align-items: center;
     flex: 1;
     min-width: 0;
-    gap: 12px 28px;
+    gap: 12px 16px;
 }
 
 .nav-phone {
@@ -163,8 +163,8 @@ p {
     font-size: 14px;
     transition: color 0.2s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 28px 18px;
+    letter-spacing: 0.35px;
+    padding: 28px 10px;
     display: block;
     white-space: nowrap;
     position: relative;
@@ -174,8 +174,8 @@ p {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 18px;
-    right: 18px;
+    left: 10px;
+    right: 10px;
     height: 3px;
     background: var(--primary-color);
     transform: scaleX(0);
@@ -202,7 +202,7 @@ p {
     font-size: 14px;
     letter-spacing: 0.3px;
     text-transform: none;
-    padding: 28px 12px 28px 18px;
+    padding: 28px 8px 28px 10px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -661,6 +661,38 @@ p {
     transform: scale(1.05);
 }
 
+/* Shop by category: show full hero without cropping (e.g. wide contractor banner) */
+.category-card--contain {
+    background: var(--white);
+}
+
+.category-card--contain img {
+    object-fit: contain;
+    object-position: center;
+    padding: clamp(10px, 4%, 24px);
+    box-sizing: border-box;
+}
+
+.category-card--contain:hover img {
+    transform: scale(1.03);
+}
+
+/* Trailer hardware tile: image ~30% smaller, centred in the square */
+.category-card.category-card--hardware {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-card.category-card--hardware img {
+    width: 70%;
+    height: 70%;
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    object-position: center;
+}
+
 .category-label {
     position: absolute;
     bottom: 0;
@@ -723,6 +755,12 @@ p {
     object-fit: cover;
     object-position: center;
     display: block;
+}
+
+/* Full image visible inside Why Choose card (no cropping) */
+.feature-icon--fit-contain img {
+    object-fit: contain;
+    max-height: 100%;
 }
 
 .feature-card h3 {
@@ -1443,6 +1481,7 @@ p {
 .service-detail-content.hardware-full-width .service-detail-text {
     max-width: 100%;
     width: 100%;
+    text-align: center;
 }
 
 /* Header Row: Image + Heading/Description */
@@ -1453,6 +1492,11 @@ p {
     gap: 40px;
     align-items: start;
     margin-bottom: 28px;
+}
+
+/* Digger trailer page: animated hero ~2/3 width, heading + copy ~1/3 */
+.service-header-row.service-header-row--digger-hero {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
 }
 
 .service-header-row .service-detail-image {
@@ -1841,6 +1885,48 @@ table.spec-table tbody tr:last-child td {
     border-top: 1px solid #e5e5e5;
 }
 
+.product-section__aka {
+    font-weight: 600;
+    color: #64748b;
+    font-size: 0.92em;
+}
+
+.digamax-card-hero {
+    margin: 4px auto 20px;
+    width: 100%;
+    max-width: min(100%, 900px);
+    border-radius: var(--radius-sm, 8px);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    box-sizing: border-box;
+}
+
+.digamax-card-hero img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.features-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.features-two-column--tight-top {
+    margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+    .features-two-column {
+        grid-template-columns: 1fr;
+    }
+}
+
 .product-detail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1865,74 +1951,9 @@ table.spec-table tbody tr:last-child td {
     gap: 12px;
 }
 
-/* Hardware Grid — image-dominant tiles with bottom label bar */
-.hw-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+/* Hardware page gallery — reuses Shop By Category layout (.category-grid + .category-card + .category-label) */
+.service-detail-content.hardware-full-width .hardware-gallery-grid {
     margin-top: 30px;
-}
-
-.hw-card {
-    overflow: hidden;
-    background: var(--white);
-    cursor: default;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    transition: box-shadow 0.3s ease;
-}
-
-.hw-card:hover {
-    box-shadow: var(--card-shadow-hover);
-}
-
-.hw-card img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    padding: 0;
-    background: #e8eaef;
-    transition: transform 0.4s ease;
-}
-
-.hw-card:hover img {
-    transform: scale(1.06);
-}
-
-.hw-card__label {
-    display: block;
-    background: var(--primary-color);
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 10px 14px;
-    text-align: left;
-    margin-top: 0;
-}
-
-@media (max-width: 1024px) {
-    .hw-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .hw-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 400px) {
-    .hw-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Legacy hardware-item styles (kept for other pages if needed) */
@@ -2056,6 +2077,16 @@ table.spec-table tbody tr:last-child td {
     color: var(--secondary-color);
 }
 
+.parts-card__subline {
+    padding: 0 14px 12px;
+    margin: -6px 0 0;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-light);
+    line-height: 1.35;
+}
+
 @media (max-width: 992px) {
     .parts-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2069,6 +2100,14 @@ table.spec-table tbody tr:last-child td {
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin-top: 16px;
+}
+
+.gallery-grid.gallery-grid--cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.gallery-grid.gallery-grid--cols-5 .gallery-thumb {
+    min-width: 0;
 }
 
 .gallery-thumb {
@@ -2208,13 +2247,13 @@ table.spec-table tbody tr:last-child td {
 }
 
 @media (max-width: 992px) {
-    .gallery-grid {
+    .gallery-grid:not(.gallery-grid--cols-5) {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 600px) {
-    .gallery-grid {
+    .gallery-grid:not(.gallery-grid--cols-5) {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -2648,6 +2687,10 @@ table.spec-table tbody tr:last-child td {
         grid-template-columns: minmax(0, 1fr);
         gap: 24px;
         margin-bottom: 30px;
+    }
+
+    .service-header-row.service-header-row--digger-hero {
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .service-detail .features-grid {

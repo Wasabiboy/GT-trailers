@@ -308,11 +308,23 @@ document.head.appendChild(style);
 
 /** Alt text from filename: "Spare-wheel-and-Mount.png" → "Spare wheel and mount" */
 function altTextFromImageSrc(src) {
-    if (!src || typeof src !== 'string') return 'Trailer accessory';
-    const file = src.split('/').pop() || '';
+    if (!src || typeof src !== 'string') return 'Image';
+    let pathPart = src;
+    try {
+        pathPart = new URL(src, typeof window !== 'undefined' ? window.location.href : 'https://example.com/').pathname;
+    } catch (e) {
+        /* keep relative src */
+    }
+    const rawFile = pathPart.split('/').pop() || '';
+    let file = rawFile;
+    try {
+        file = decodeURIComponent(rawFile);
+    } catch (e) {
+        file = rawFile;
+    }
     const stem = file.replace(/\.[^.]+$/i, '');
-    if (!stem) return 'Trailer accessory';
-    const withSpaces = stem.replace(/-/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+    if (!stem) return 'Image';
+    const withSpaces = stem.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
     const words = withSpaces.split(' ');
     const small = new Set(['and', 'or', 'with', 'for', 'of', 'the', 'a', 'an', 'in', 'on', 'to']);
     return words
@@ -344,7 +356,10 @@ function updateAccessoryModalImage() {
     if (!thumb) return;
     const relSrc = thumb.getAttribute('src');
     accessoryModalImg.src = thumb.currentSrc || thumb.src;
-    const alt = altTextFromImageSrc(relSrc);
+    const lbl = cell.querySelector('.accessory-cell-label');
+    const fromThumb = thumb.getAttribute('alt') && thumb.getAttribute('alt').trim();
+    const fromLabel = lbl && lbl.textContent ? lbl.textContent.trim() : '';
+    const alt = fromThumb || fromLabel || altTextFromImageSrc(relSrc);
     accessoryModalImg.alt = alt;
     if (accessoryModalCaption) accessoryModalCaption.textContent = alt;
 }
@@ -391,8 +406,15 @@ function initAccessoryLightbox() {
 
     accessoryLightboxCells.forEach((cell, i) => {
         const img = cell.querySelector('img');
-        if (img) img.setAttribute('alt', altTextFromImageSrc(img.getAttribute('src')));
         const lbl = cell.querySelector('.accessory-cell-label');
+        if (img) {
+            const fromLabel = lbl && lbl.textContent ? lbl.textContent.trim() : '';
+            if (fromLabel) {
+                img.setAttribute('alt', fromLabel);
+            } else if (!img.getAttribute('alt') || !img.getAttribute('alt').trim()) {
+                img.setAttribute('alt', altTextFromImageSrc(img.getAttribute('src')));
+            }
+        }
         if (lbl && !lbl.id) lbl.id = 'accessory-cell-lbl-' + i;
         if (lbl && lbl.id) cell.setAttribute('aria-labelledby', lbl.id);
         cell.setAttribute('role', 'button');
@@ -434,7 +456,10 @@ let galleryImages = [];
 
 function openModal(thumbEl) {
     if (!galleryModal || !galleryModalImg || !thumbEl) return;
-    galleryImages = Array.from(document.querySelectorAll('.gallery-grid .gallery-thumb img'));
+    const grid = thumbEl.closest('.gallery-grid');
+    galleryImages = grid
+        ? Array.from(grid.querySelectorAll('.gallery-thumb img'))
+        : Array.from(document.querySelectorAll('.gallery-grid .gallery-thumb img'));
     const clicked = thumbEl.querySelector('img');
     gallerySlideIndex = clicked ? galleryImages.indexOf(clicked) : 0;
     if (gallerySlideIndex < 0) gallerySlideIndex = 0;
@@ -447,7 +472,8 @@ function updateGalleryModalImage() {
     if (!galleryModalImg || !galleryImages.length) return;
     const img = galleryImages[gallerySlideIndex];
     galleryModalImg.src = img.src;
-    galleryModalImg.alt = img.alt || 'Gallery image';
+    const fromAlt = img.getAttribute('alt') && img.getAttribute('alt').trim();
+    galleryModalImg.alt = fromAlt || altTextFromImageSrc(img.getAttribute('src')) || 'Gallery image';
 }
 
 function closeModal() {
