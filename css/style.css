@@ -2379,7 +2379,8 @@ table.spec-table tbody tr:last-child td {
     margin-top: 0;
 }
 
-.footer-column h4 {
+.footer-column h4,
+.footer-column .footer-heading {
     font-size: 15px;
     margin-bottom: 16px;
     color: var(--white);

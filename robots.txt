@@ -4,3 +4,7 @@ Allow: /
 # Internal inventory (not for search)
 Disallow: /admin.html
 Disallow: /image-inventory.json
+Disallow: /GT-Trailers-Change-Requests.html
+Disallow: /page-tree-diagram.html
+
+Sitemap: https://gttrailers.co.nz/sitemap.xml
