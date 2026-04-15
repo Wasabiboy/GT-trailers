@@ -348,6 +348,10 @@ function altTextFromImageSrc(src) {
         .trim();
 }
 
+const ACCESSORY_MODAL_DEFAULT_ALT = 'Selected accessory image';
+const JETSKI_PARTS_MODAL_DEFAULT_ALT = 'Selected jetski part image';
+const GALLERY_MODAL_DEFAULT_ALT = 'Selected gallery image';
+
 // Accessory lightbox (index.html grid)
 const accessoryModal = document.getElementById('accessoryModal');
 const accessoryModalImg = document.getElementById('accessoryModalImg');
@@ -370,7 +374,7 @@ function updateAccessoryModalImage() {
     const lbl = cell.querySelector('.accessory-cell-label');
     const fromThumb = thumb.getAttribute('alt') && thumb.getAttribute('alt').trim();
     const fromLabel = lbl && lbl.textContent ? lbl.textContent.trim() : '';
-    const alt = fromThumb || fromLabel || altTextFromImageSrc(relSrc);
+    const alt = fromThumb || fromLabel || altTextFromImageSrc(relSrc) || ACCESSORY_MODAL_DEFAULT_ALT;
     accessoryModalImg.alt = alt;
     if (accessoryModalCaption) accessoryModalCaption.textContent = alt;
 }
@@ -392,7 +396,7 @@ function closeAccessoryModal() {
     if (!accessoryModal || !accessoryModalImg) return;
     accessoryModal.setAttribute('hidden', '');
     accessoryModalImg.removeAttribute('src');
-    accessoryModalImg.alt = '';
+    accessoryModalImg.alt = ACCESSORY_MODAL_DEFAULT_ALT;
     if (accessoryModalCaption) accessoryModalCaption.textContent = '';
     document.body.style.overflow = '';
     if (lastFocusedAccessoryCell && typeof lastFocusedAccessoryCell.focus === 'function') {
@@ -481,7 +485,7 @@ function updateJetskiPartsModalImage() {
     const nameEl = cell.querySelector('.parts-card__name');
     const fromThumb = thumb.getAttribute('alt') && thumb.getAttribute('alt').trim();
     const fromName = nameEl && nameEl.textContent ? nameEl.textContent.trim() : '';
-    const alt = fromThumb || fromName || altTextFromImageSrc(relSrc);
+    const alt = fromThumb || fromName || altTextFromImageSrc(relSrc) || JETSKI_PARTS_MODAL_DEFAULT_ALT;
     jetskiPartsModalImg.alt = alt;
     if (jetskiPartsModalCaption) jetskiPartsModalCaption.textContent = alt;
 }
@@ -503,7 +507,7 @@ function closeJetskiPartsModal() {
     if (!jetskiPartsModal || !jetskiPartsModalImg) return;
     jetskiPartsModal.setAttribute('hidden', '');
     jetskiPartsModalImg.removeAttribute('src');
-    jetskiPartsModalImg.alt = '';
+    jetskiPartsModalImg.alt = JETSKI_PARTS_MODAL_DEFAULT_ALT;
     if (jetskiPartsModalCaption) jetskiPartsModalCaption.textContent = '';
     document.body.style.overflow = '';
     if (lastFocusedJetskiPartsCell && typeof lastFocusedJetskiPartsCell.focus === 'function') {
@@ -595,14 +599,14 @@ function updateGalleryModalImage() {
     const img = galleryImages[gallerySlideIndex];
     galleryModalImg.src = img.src;
     const fromAlt = img.getAttribute('alt') && img.getAttribute('alt').trim();
-    galleryModalImg.alt = fromAlt || altTextFromImageSrc(img.getAttribute('src')) || 'Gallery image';
+    galleryModalImg.alt = fromAlt || altTextFromImageSrc(img.getAttribute('src')) || GALLERY_MODAL_DEFAULT_ALT;
 }
 
 function closeModal() {
     if (!galleryModal || !galleryModalImg) return;
     galleryModal.setAttribute('hidden', '');
     galleryModalImg.removeAttribute('src');
-    galleryModalImg.alt = '';
+    galleryModalImg.alt = GALLERY_MODAL_DEFAULT_ALT;
     document.body.style.overflow = '';
 }
 

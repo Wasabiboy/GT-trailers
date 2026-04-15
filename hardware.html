@@ -151,7 +151,7 @@
         <div class="gallery-modal__backdrop" aria-hidden="true"></div>
         <div class="gallery-modal__inner">
             <button type="button" class="gallery-modal__close" id="hwModalClose" aria-label="Close image">&times;</button>
-            <img class="gallery-modal__img" id="hwModalImg" src="" alt="">
+            <img class="gallery-modal__img" id="hwModalImg" src="" alt="Selected hardware image">
         </div>
     </div>
 
@@ -168,7 +168,7 @@
 
         function openModal(src, alt) {
             modalImg.src = src;
-            modalImg.alt = alt || '';
+            modalImg.alt = alt || 'Selected hardware image';
             modal.removeAttribute('hidden');
             document.body.style.overflow = 'hidden';
             closeBtn.focus();
@@ -177,6 +177,7 @@
         function closeModal() {
             modal.setAttribute('hidden', '');
             modalImg.src = '';
+            modalImg.alt = 'Selected hardware image';
             document.body.style.overflow = '';
         }
 
