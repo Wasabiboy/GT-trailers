@@ -47,16 +47,17 @@ document.querySelectorAll('.nav-menu .dropdown > a').forEach(dropdownLink => {
     }
 });
 
-// Smooth Scrolling
+// Smooth scrolling for same-page hash links (respects CSS scroll-margin / scroll-padding)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
+        const id = decodeURIComponent(href.slice(1));
+        if (!id) return;
+        const target = document.getElementById(id);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
@@ -113,7 +114,7 @@ function updateActiveNav() {
 
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - 120;
         const sectionId = section.getAttribute('id');
         const navLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
 
@@ -448,6 +449,117 @@ function initAccessoryLightbox() {
 
 initAccessoryLightbox();
 
+// Jetski parts lightbox (jetskis.html)
+const jetskiPartsModal = document.getElementById('jetskiPartsModal');
+const jetskiPartsModalImg = document.getElementById('jetskiPartsModalImg');
+const jetskiPartsModalCaption = document.getElementById('jetskiPartsModalCaption');
+const jetskiPartsModalClose = document.getElementById('jetskiPartsModalClose');
+const jetskiPartsModalPrev = document.getElementById('jetskiPartsModalPrev');
+const jetskiPartsModalNext = document.getElementById('jetskiPartsModalNext');
+let jetskiPartsLightboxCells = [];
+let jetskiPartsSlideIndex = 0;
+let lastFocusedJetskiPartsCell = null;
+
+function updateJetskiPartsModalImage() {
+    if (!jetskiPartsModalImg || !jetskiPartsLightboxCells.length) return;
+    const cell = jetskiPartsLightboxCells[jetskiPartsSlideIndex];
+    if (!cell) return;
+    const thumb = cell.querySelector('img');
+    if (!thumb) return;
+    const relSrc = thumb.getAttribute('src');
+    jetskiPartsModalImg.src = thumb.currentSrc || thumb.src;
+    const nameEl = cell.querySelector('.parts-card__name');
+    const fromThumb = thumb.getAttribute('alt') && thumb.getAttribute('alt').trim();
+    const fromName = nameEl && nameEl.textContent ? nameEl.textContent.trim() : '';
+    const alt = fromThumb || fromName || altTextFromImageSrc(relSrc);
+    jetskiPartsModalImg.alt = alt;
+    if (jetskiPartsModalCaption) jetskiPartsModalCaption.textContent = alt;
+}
+
+function openJetskiPartsModal(index) {
+    if (!jetskiPartsModal || !jetskiPartsModalImg || !jetskiPartsLightboxCells.length) return;
+    jetskiPartsSlideIndex = index;
+    if (jetskiPartsSlideIndex < 0) jetskiPartsSlideIndex = 0;
+    if (jetskiPartsSlideIndex >= jetskiPartsLightboxCells.length) {
+        jetskiPartsSlideIndex = jetskiPartsLightboxCells.length - 1;
+    }
+    updateJetskiPartsModalImage();
+    jetskiPartsModal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    if (jetskiPartsModalClose) jetskiPartsModalClose.focus();
+}
+
+function closeJetskiPartsModal() {
+    if (!jetskiPartsModal || !jetskiPartsModalImg) return;
+    jetskiPartsModal.setAttribute('hidden', '');
+    jetskiPartsModalImg.removeAttribute('src');
+    jetskiPartsModalImg.alt = '';
+    if (jetskiPartsModalCaption) jetskiPartsModalCaption.textContent = '';
+    document.body.style.overflow = '';
+    if (lastFocusedJetskiPartsCell && typeof lastFocusedJetskiPartsCell.focus === 'function') {
+        lastFocusedJetskiPartsCell.focus({ preventScroll: true });
+    }
+    lastFocusedJetskiPartsCell = null;
+}
+
+function changeJetskiPartsSlide(dir) {
+    if (!jetskiPartsLightboxCells.length) return;
+    jetskiPartsSlideIndex += dir;
+    if (jetskiPartsSlideIndex >= jetskiPartsLightboxCells.length) jetskiPartsSlideIndex = 0;
+    if (jetskiPartsSlideIndex < 0) jetskiPartsSlideIndex = jetskiPartsLightboxCells.length - 1;
+    updateJetskiPartsModalImage();
+}
+
+function initJetskiPartsLightbox() {
+    const grid = document.querySelector('.jetski-parts-grid');
+    if (!jetskiPartsModal || !jetskiPartsModalImg || !grid) return;
+
+    jetskiPartsLightboxCells = Array.from(grid.querySelectorAll('.parts-card'));
+
+    jetskiPartsLightboxCells.forEach((cell, i) => {
+        const img = cell.querySelector('img');
+        const nameEl = cell.querySelector('.parts-card__name');
+        if (img) {
+            const fromName = nameEl && nameEl.textContent ? nameEl.textContent.trim() : '';
+            if (fromName) {
+                img.setAttribute('alt', fromName);
+            } else if (!img.getAttribute('alt') || !img.getAttribute('alt').trim()) {
+                img.setAttribute('alt', altTextFromImageSrc(img.getAttribute('src')));
+            }
+        }
+        if (nameEl && !nameEl.id) nameEl.id = 'jetski-parts-name-' + i;
+        if (nameEl && nameEl.id) cell.setAttribute('aria-labelledby', nameEl.id);
+        cell.setAttribute('role', 'button');
+        cell.setAttribute('tabindex', '0');
+    });
+
+    jetskiPartsLightboxCells.forEach((cell, index) => {
+        cell.addEventListener('click', () => {
+            lastFocusedJetskiPartsCell = cell;
+            openJetskiPartsModal(index);
+        });
+        cell.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                lastFocusedJetskiPartsCell = cell;
+                openJetskiPartsModal(index);
+            }
+        });
+    });
+
+    const inner = jetskiPartsModal.querySelector('.gallery-modal__inner');
+    if (inner) {
+        inner.addEventListener('click', (e) => e.stopPropagation());
+    }
+    jetskiPartsModal.addEventListener('click', () => closeJetskiPartsModal());
+
+    if (jetskiPartsModalClose) jetskiPartsModalClose.addEventListener('click', () => closeJetskiPartsModal());
+    if (jetskiPartsModalPrev) jetskiPartsModalPrev.addEventListener('click', () => changeJetskiPartsSlide(-1));
+    if (jetskiPartsModalNext) jetskiPartsModalNext.addEventListener('click', () => changeJetskiPartsSlide(1));
+}
+
+initJetskiPartsLightbox();
+
 // Gallery lightbox (digger-trailer.html and similar)
 const galleryModal = document.getElementById('galleryModal');
 const galleryModalImg = document.getElementById('galleryModalImg');
@@ -506,6 +618,7 @@ if (galleryModal) {
 
 document.addEventListener('keydown', function (e) {
     const accessoryOpen = accessoryModal && !accessoryModal.hasAttribute('hidden');
+    const jetskiPartsOpen = jetskiPartsModal && !jetskiPartsModal.hasAttribute('hidden');
     const galleryOpen = galleryModal && !galleryModal.hasAttribute('hidden');
     if (accessoryOpen) {
         if (e.key === 'Escape') {
@@ -517,6 +630,19 @@ document.addEventListener('keydown', function (e) {
         } else if (e.key === 'ArrowRight') {
             e.preventDefault();
             changeAccessorySlide(1);
+        }
+        return;
+    }
+    if (jetskiPartsOpen) {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            closeJetskiPartsModal();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            changeJetskiPartsSlide(-1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            changeJetskiPartsSlide(1);
         }
         return;
     }
