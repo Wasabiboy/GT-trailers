@@ -15,6 +15,10 @@ function closeMenu() {
     hamburger.classList.remove('active');
     menuOverlay.classList.remove('active');
     document.body.style.overflow = '';
+    // Reset submenu state so mobile menu reopens collapsed.
+    document.querySelectorAll('.nav-menu .dropdown.active').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
 }
 
 hamburger.addEventListener('click', toggleMenu);
@@ -22,29 +26,35 @@ menuOverlay.addEventListener('click', closeMenu);
 
 // Close menu when clicking on a link
 document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', function(e) {
+        const isMobile = window.innerWidth <= 768;
+        const dropdown = this.parentElement;
+        const isDropdownToggle = isMobile && dropdown && dropdown.classList.contains('dropdown');
+
+        if (isDropdownToggle) {
+            e.preventDefault();
+            const shouldOpen = !dropdown.classList.contains('active');
+
+            // Keep one submenu open at a time in mobile menu.
+            document.querySelectorAll('.nav-menu .dropdown.active').forEach(openDropdown => {
+                if (openDropdown !== dropdown) {
+                    openDropdown.classList.remove('active');
+                }
+            });
+
+            dropdown.classList.toggle('active', shouldOpen);
+            return;
+        }
+
+        closeMenu();
+    });
 });
 
-// Dropdown menu functionality
-document.querySelectorAll('.nav-menu .dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        // On mobile, toggle dropdown instead of navigating
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const dropdown = this.parentElement;
-            dropdown.classList.toggle('active');
-        }
-        // On desktop, allow navigation to the main page
+// Prevent dropdown from closing when clicking inside dropdown menu
+document.querySelectorAll('.nav-menu .dropdown-menu').forEach(dropdownMenu => {
+    dropdownMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
     });
-
-    // Prevent dropdown from closing when clicking inside dropdown menu
-    const dropdown = dropdownLink.parentElement;
-    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-    if (dropdownMenu) {
-        dropdownMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    }
 });
 
 // Smooth scrolling for same-page hash links (respects CSS scroll-margin / scroll-padding)
