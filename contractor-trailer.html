@@ -19,10 +19,29 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ── Contractor model cards ── */
+        .contractor-category {
+            margin-top: 44px;
+        }
+        .contractor-category--range {
+            border: 2px solid #c62828;
+            border-radius: 10px;
+            padding: 20px 22px 6px;
+            background: #fff;
+        }
+        .contractor-category__title {
+            margin-bottom: 16px;
+        }
+        .contractor-category--range .contractor-category__title {
+            display: inline-block;
+            margin: 0 0 18px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: #1a3a5c;
+            color: #fff;
+        }
         .contractor-model {
-            margin: 48px 0;
-            padding-bottom: 48px;
+            margin: 28px 0;
+            padding-bottom: 28px;
             border-bottom: 1px solid #e0e0e0;
         }
         .contractor-model:last-of-type {
@@ -31,20 +50,19 @@
         .contractor-model__inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: stretch;   /* image column matches info column height */
+            gap: 32px;
+            align-items: stretch;
         }
         @media (max-width: 768px) {
             .contractor-model__inner { grid-template-columns: 1fr; }
         }
         .contractor-model__img {
             width: 100%;
-            height: 100%;           /* fill the stretched grid cell */
-            min-height: 260px;      /* floor so it never collapses */
+            height: 100%;
+            min-height: 260px;
             object-fit: cover;
             border-radius: 6px;
             display: block;
-            /* lift white-background product photos off the grey page */
             box-shadow: 0 2px 12px rgba(0,0,0,0.13);
             border: 1px solid #d8d8d8;
             background-color: #fff;
@@ -52,10 +70,10 @@
         .contractor-model__info {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
         .contractor-model__title {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary-color, #1a2e44);
             margin: 0;
@@ -67,7 +85,6 @@
             margin: 0;
         }
 
-        /* ── Blue vertical spec table ── */
         .spec-table-v {
             width: 100%;
             border-collapse: collapse;
@@ -93,7 +110,6 @@
             color: #222;
         }
 
-        /* yellow highlight on hash nav */
         .contractor-model.highlighted {
             outline: 3px solid #f0c000;
             outline-offset: 6px;
@@ -181,9 +197,9 @@
     <section class="page-header">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html">Home</a> <span>/</span> <a href="index.html#services">Trailers</a> <span>/</span> <span>Contractor Trailer</span>
+                <a href="index.html">Home</a> <span>/</span> <a href="index.html#services">Trailers</a> <span>/</span> <span>Contractor Trailers</span>
             </div>
-            <h1>Contractor Trailer</h1>
+            <h1>Contractor Trailers</h1>
         </div>
     </section>
 
@@ -193,49 +209,32 @@
             <!-- Intro Row -->
             <div class="service-header-row">
                 <div class="service-detail-image">
-                    <img src="images/gt-trailers-13.webp" alt="GT Contractor Trailers — GT Contractor Trailers are designed and built to withstand day after day of hard, rugged treatment in the commercial environment.">
+                    <img src="images/gt-trailers-13.webp" alt="GT Contractor Trailers for professional New Zealand tradies and contractors.">
                 </div>
                 <div class="service-header-text">
-                    <h2>GT Contractor Trailers</h2>
-                    <p>GT Contractor Trailers are designed and built to withstand day after day of hard, rugged treatment in the commercial environment. They utilise the same specifications as our heavier duty Digger and Transport Trailers.</p>
-                </div>
-            </div>
-
-            <!-- Features -->
-            <div class="features-grid contractor-features-grid">
-                <div class="feature-section">
-                    <h3>Standard Features</h3>
-                    <ul class="service-list">
-                        <li>Welded steel/tread plate construction</li>
-                        <li>Fully hot-dip galvanised</li>
-                        <li>Single or tandem axle</li>
-                        <li>Laminated marine plywood deck</li>
-                        <li>Hinged tailgates &amp; tie hooks around chassis</li>
-                    </ul>
-                </div>
-                <div class="feature-section">
-                    <h3>Optional Extras</h3>
-                    <ul class="service-list">
-                        <li>Galvanised mesh cage</li>
-                        <li>Spare wheel mount</li>
-                        <li>H-racks for long loads</li>
+                    <h2>GT Contractor Trailers: Built for the Professional Tradie</h2>
+                    <p>When your livelihood depends on your gear, you need a trailer that works as hard as you do. GT Contractor Trailers are engineered to withstand the daily rigours of the New Zealand commercial environment. Built with the same heavy-duty specifications as our industrial digger and transport ranges, these trailers feature a fully hot-dip galvanised monocoque chassis and a durable marine-grade plywood deck. From the compact CT8x4 workhorse to our high-capacity 2000kg GVM tandem axle models, the GT range offers the ultimate stability and payload for tools, timber, and site materials.</p>
+                    <ul class="service-list" style="margin-top: 16px;">
+                        <li><strong>Rugged NZ Construction:</strong> Fully hot-dip galvanised welded steel and tread plate for maximum durability.</li>
+                        <li><strong>Commercial Capacity:</strong> Available in single or tandem axle configurations with up to 1600kg load ratings.</li>
+                        <li><strong>Versatile Design:</strong> Features hinged tailgates and perimeter tie hooks for secure, easy loading.</li>
+                        <li><strong>Customisable Setup:</strong> Optimise your trailer with optional galvanised mesh cages, H-racks for long loads, or hydraulic braking upgrades.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- ════════════════════════════════
-                 Individual model sections
-                 ════════════════════════════════ -->
+            <div class="contractor-category contractor-category--range">
+                <h3 class="contractor-category__title">Contractor Trailer Range</h3>
 
             <!-- CT8x4 -->
             <div class="contractor-model" id="ct8x4">
                 <div class="contractor-model__inner">
                     <img class="contractor-model__img"
                          src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CONTRACTOR_CT8X4_23-2.webp"
-                         alt="CT8x4 — The CT8x4 is our entry-level contractor trailer — compact yet tough.">
+                         alt="Contractor Trailer 2.44mx1.22m Single Axle - CT8x4">
                     <div class="contractor-model__info">
-                        <h3 class="contractor-model__title">CT8x4</h3>
-                        <p class="contractor-model__desc">The CT8x4 is our entry-level contractor trailer — compact yet tough. Its 2.44m &times; 1.22m marine ply deck handles everything from garden waste to tools and supplies, while the fully hot-dip galvanised frame keeps it rust-free for years. Perfect for tradies and small contractors needing a reliable daily workhorse.</p>
+                        <h4 class="contractor-model__title">Contractor Trailer 2.44mx1.22m Single Axle &ndash; CT8x4</h4>
+                        <p class="contractor-model__desc">1500kg GVM Single Axle Contractor Trailer. 2.44m x 1.22m marine ply deck and galvanised steel frame. The perfect compact workhorse for NZ tradies and contractors.</p>
                         <table class="spec-table-v">
                             <tr><td>Product Code</td><td>CT8x4</td></tr>
                             <tr><td>Deck Area</td><td>2.44m &times; 1.22m</td></tr>
@@ -253,10 +252,10 @@
                 <div class="contractor-model__inner">
                     <img class="contractor-model__img"
                          src="https://rexproducts.co.nz/wp-content/uploads/2022/01/Contractors-trailer.webp"
-                         alt="CT8x5 — The CT8x5 gives you extra width over the CT8x4 — the same 2.44m length but a 1.52m deck width — making it ideal when you need to carry wider loads or more gear side by side.">
+                         alt="Contractor Trailer 2.44mx1.52m Single Axle - CT8x5">
                     <div class="contractor-model__info">
-                        <h3 class="contractor-model__title">CT8x5</h3>
-                        <p class="contractor-model__desc">The CT8x5 gives you extra width over the CT8x4 — the same 2.44m length but a 1.52m deck width — making it ideal when you need to carry wider loads or more gear side by side. Built with the same welded steel and tread plate construction and fully galvanised for long-lasting performance on site.</p>
+                        <h4 class="contractor-model__title">Contractor Trailer 2.44mx1.52m Single Axle &ndash; CT8x5</h4>
+                        <p class="contractor-model__desc">1500kg GVM Single Axle Contractor Trailer. Wider 2.44m x 1.52m deck for extra gear. Fully hot-dip galvanised with marine ply deck for rugged commercial use.</p>
                         <table class="spec-table-v">
                             <tr><td>Product Code</td><td>CT8x5</td></tr>
                             <tr><td>Deck Area</td><td>2.44m &times; 1.52m</td></tr>
@@ -274,10 +273,10 @@
                 <div class="contractor-model__inner">
                     <img class="contractor-model__img"
                          src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CT8X5TA-1.webp"
-                         alt="CT8x5TA — The CT8x5TA is the tandem-axle version of our popular CT8x5, adding a 400kg boost in load capacity and extra stability at speed.">
+                         alt="Contractor Trailer 2.44mx1.52m Tandem Axle - CT8x5TA">
                     <div class="contractor-model__info">
-                        <h3 class="contractor-model__title">CT8x5TA</h3>
-                        <p class="contractor-model__desc">The CT8x5TA is the tandem-axle version of our popular CT8x5, adding a 400kg boost in load capacity and extra stability at speed. With a GVM of 2,000kg it handles heavier commercial payloads with confidence. Hydraulic brake units are available as an optional extra for added control.</p>
+                        <h4 class="contractor-model__title">Contractor Trailer 2.44mx1.52m Tandem Axle &ndash; CT8x5TA</h4>
+                        <p class="contractor-model__desc">2000kg GVM Tandem Axle Contractor Trailer. 2.44m x 1.52m deck with a 1600kg load capacity. Extra stability and payload for heavy-duty commercial site work.</p>
                         <table class="spec-table-v">
                             <tr><td>Product Code</td><td>CT8x5TA</td></tr>
                             <tr><td>Deck Area</td><td>2.44m &times; 1.52m</td></tr>
@@ -295,10 +294,10 @@
                 <div class="contractor-model__inner">
                     <img class="contractor-model__img"
                          src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CT10X5-1.webp"
-                         alt="CT10x5 — Need more length? The CT10x5 stretches to 3.05m while keeping the practical 1.52m width, giving you significantly more deck space for longer materials like timber, pipe, and scaffolding.">
+                         alt="Contractor Trailer 3.05mx1.52m Single Axle - CT10x5">
                     <div class="contractor-model__info">
-                        <h3 class="contractor-model__title">CT10x5</h3>
-                        <p class="contractor-model__desc">Need more length? The CT10x5 stretches to 3.05m while keeping the practical 1.52m width, giving you significantly more deck space for longer materials like timber, pipe, and scaffolding. The single-axle setup keeps towing straightforward while the galvanised chassis ensures long-term durability on the job.</p>
+                        <h4 class="contractor-model__title">Contractor Trailer 3.05mx1.52m Single Axle &ndash; CT10x5</h4>
+                        <p class="contractor-model__desc">1500kg GVM Single Axle Contractor Trailer. Extra-long 3.05m x 1.52m deck ideal for timber and scaffolding. Built tough in NZ with a galvanised monocoque chassis.</p>
                         <table class="spec-table-v">
                             <tr><td>Product Code</td><td>CT10x5</td></tr>
                             <tr><td>Deck Area</td><td>3.05m &times; 1.52m</td></tr>
@@ -316,10 +315,10 @@
                 <div class="contractor-model__inner">
                     <img class="contractor-model__img"
                          src="https://rexproducts.co.nz/wp-content/uploads/2022/01/CT10X5TA-1.webp"
-                         alt="CT10x5TA — The CT10x5TA is our largest and most capable contractor trailer — combining a full 3.05m × 1.52m deck with tandem-axle stability and a 1,600kg load rating.">
+                         alt="Contractor Trailer 3.05mx1.52m Tandem Axle - CT10x5TA">
                     <div class="contractor-model__info">
-                        <h3 class="contractor-model__title">CT10x5TA</h3>
-                        <p class="contractor-model__desc">The CT10x5TA is our largest and most capable contractor trailer — combining a full 3.05m &times; 1.52m deck with tandem-axle stability and a 1,600kg load rating. At 2,000kg GVM it's built for serious commercial work. Hydraulic brakes are optionally available, making it safe and capable even on steep terrain.</p>
+                        <h4 class="contractor-model__title">Contractor Trailer 3.05mx1.52m Tandem Axle &ndash; CT10x5TA</h4>
+                        <p class="contractor-model__desc">2000kg GVM Tandem Axle Contractor Trailer. Our largest contractor model with 3.05m x 1.52m deck and 1600kg load rating. Safe, stable, and built for serious work.</p>
                         <table class="spec-table-v">
                             <tr><td>Product Code</td><td>CT10x5TA</td></tr>
                             <tr><td>Deck Area</td><td>3.05m &times; 1.52m</td></tr>
@@ -330,6 +329,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
             </div>
 
             <p style="margin-top: 24px; font-size: 14px; color: var(--text-light); line-height: 1.6;">
