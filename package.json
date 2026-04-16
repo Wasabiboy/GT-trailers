@@ -1,0 +1,8 @@
+{
+  "name": "gt-trailers",
+  "version": "1.0.0",
+  "description": "GT Trailers website",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

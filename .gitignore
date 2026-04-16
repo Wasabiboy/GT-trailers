@@ -1,6 +1,12 @@
 # Local tooling
 .claude/
 
+# Node dependencies (Netlify installs these at build time)
+node_modules/
+
+# Environment secrets — never commit this
+.env
+
 # Large design source library (not required for the website repo)
 GT TRAILERS/
 
