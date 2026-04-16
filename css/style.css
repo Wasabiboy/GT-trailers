@@ -2653,6 +2653,13 @@ table.spec-table tbody tr:last-child td {
         gap: 10px;
     }
 
+    .category-label {
+        padding: 8px 10px;
+        font-size: 13px;
+        letter-spacing: 0.35px;
+        line-height: 1.2;
+    }
+
     .features-grid {
         grid-template-columns: 1fr;
     }
@@ -2760,6 +2767,12 @@ table.spec-table tbody tr:last-child td {
 
     .category-card {
         aspect-ratio: 4 / 3;
+    }
+
+    .category-label {
+        padding: 7px 8px;
+        font-size: 12px;
+        letter-spacing: 0.25px;
     }
 
     .section-heading {
