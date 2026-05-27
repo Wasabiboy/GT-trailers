@@ -113,7 +113,7 @@ exports.handler = async (event) => {
             <ul>
               <li><strong>Phone:</strong> <a href="tel:096367437">09 636 7437</a></li>
               <li><strong>Email:</strong> <a href="mailto:sales@gttrailers.co.nz">sales@gttrailers.co.nz</a></li>
-              <li><strong>Hours:</strong> Mon – Fri, 7.30am – 4.30pm</li>
+              <li><strong>Hours:</strong> Mon – Fri, 7.30am – 4.00pm</li>
             </ul>
             <p style="color:#666;font-size:13px;border-top:1px solid #ddd;margin-top:24px;padding-top:16px;">
               Your message:<br>
