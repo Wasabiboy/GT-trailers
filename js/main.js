@@ -210,14 +210,40 @@ document.querySelectorAll('.stats, .about-stats').forEach(section => {
     observer.observe(section);
 });
 
-// Form Submission
+// Form Submission (Netlify Forms via fetch)
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        alert('Thank you for your enquiry! We will get back to you soon.');
-        contactForm.reset();
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+        }
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(new FormData(contactForm)).toString(),
+            });
+
+            if (response.ok) {
+                alert('Thank you for your enquiry! We will get back to you soon.');
+                contactForm.reset();
+            } else {
+                alert('Something went wrong. Please try again or call us on 09 636 7437.');
+            }
+        } catch {
+            alert('Something went wrong. Please try again or call us on 09 636 7437.');
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+            }
+        }
     });
 }
 
